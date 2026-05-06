@@ -1,0 +1,101 @@
+import { hash } from "bcrypt";
+import { NextResponse } from "next/server";
+import { z } from "zod";
+
+import { prisma } from "@/lib/prisma";
+
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+export const revalidate = 0;
+export const fetchCache = "force-no-store";
+export const dynamicParams = true;
+export const preferredRegion = "auto";
+
+const PROGRAM_OPTIONS = [
+  "Administración de Empresas",
+  "Contaduría Pública",
+  "Derecho",
+  "Economía",
+  "Licenciatura en Literatura y Lengua Castellana",
+  "Ingeniería Ambiental y Sanitaria",
+  "Ingeniería de Sistemas",
+  "Ingeniería Agroindustrial",
+  "Ingeniería Agropecuaria",
+  "Licenciatura en Educación Física, Recreación y Deporte",
+] as const;
+
+const EMAIL_DOMAIN = "unicesar.edu.co";
+
+const registerSchema = z.object({
+  userType: z.enum(["ESTUDIANTE", "EGRESADO"]), 
+  name: z.string().min(2).max(100),
+  email: z
+    .string()
+    .trim()
+    .toLowerCase()
+    .email()
+    .refine((value) => value.endsWith(`@${EMAIL_DOMAIN}`), {
+      message: `El correo debe ser @${EMAIL_DOMAIN}`,
+    }),
+  password: z
+    .string()
+    .min(8)
+    .max(128)
+    .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/, {
+      message: "Incluye mayúscula, minúscula y número",
+    }),
+  documentNumber: z
+    .string()
+    .trim()
+    .regex(/^\d+$/, { message: "El documento solo debe tener números" })
+    .min(6)
+    .max(30),
+  program: z.enum(PROGRAM_OPTIONS),
+});
+
+export async function POST(req: Request) {
+  try {
+    const body = await req.json();
+    const parsed = registerSchema.safeParse(body);
+
+    if (!parsed.success) {
+      const fieldErrors = parsed.error.flatten().fieldErrors;
+      const emailError = fieldErrors.email?.[0];
+      const message = emailError ?? "Datos inválidos";
+      return NextResponse.json({ error: message, issues: fieldErrors }, { status: 400 });
+    }
+
+    const { userType, name, email, password, documentNumber, program } = parsed.data; 
+
+    const existing = await prisma.user.findUnique({ where: { email } });
+    if (existing) {
+      return NextResponse.json(
+        { error: "Ya existe un usuario con este correo." },
+        { status: 409 }
+      );
+    }
+
+    const passwordHash = await hash(password, 10);
+
+    await prisma.user.create({
+      data: {
+        email,
+        name,
+        passwordHash,
+        userType,
+        profile: {
+          create: {
+            fullName: name,
+            documentNumber,
+            program,
+          },
+        },
+      },
+    });
+
+    return NextResponse.json({ ok: true }, { status: 201 });
+  } catch (error) {
+    console.error("register_error", error);
+    return NextResponse.json({ error: "Error al registrar" }, { status: 500 });
+  }
+}
