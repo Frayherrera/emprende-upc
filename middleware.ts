@@ -2,16 +2,20 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { getToken } from "next-auth/jwt";
 
-const protectedPaths = ["/panel", "/admin"];
-
 export async function middleware(req: NextRequest) {
-  const { pathname } = req.nextUrl;
-  const isProtected = protectedPaths.some((path) => pathname.startsWith(path));
+  const pathname = req.nextUrl.pathname;
+  
+  if (!pathname.startsWith("/panel") && !pathname.startsWith("/admin")) {
+    return NextResponse.next();
+  }
 
-  if (!isProtected) return NextResponse.next();
-
-  const secret = process.env.NEXTAUTH_SECRET || process.env.AUTH_SECRET || "devsecret";
-  const token = await getToken({ req, secret });
+  const token = await getToken({ 
+    req, 
+    secret: process.env.NEXTAUTH_SECRET || process.env.AUTH_SECRET,
+    cookieName: process.env.NODE_ENV === "production" 
+      ? "__Secure-next-auth.session-token" 
+      : "next-auth.session-token"
+  });
 
   if (!token) {
     const loginUrl = new URL("/login", req.url);
@@ -27,5 +31,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/panel/:path*"],
+  matcher: ["/panel/:path*", "/admin/:path*"],
 };
