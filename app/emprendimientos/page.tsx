@@ -159,7 +159,7 @@ export default async function EmprendimientosPage({
           </Button>
         ) : (
           <Button asChild variant="secondary">
-            <Link href="/">Ingresar para publicar</Link>
+            <Link href="/login">Ingresar para publicar</Link>
           </Button>
         )}
       </div>
