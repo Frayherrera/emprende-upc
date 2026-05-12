@@ -1,0 +1,3 @@
+module.exports=[92923,a=>{"use strict";var b=a.i(49828),c=a.i(1531);function d({error:a,reset:d}){return(0,b.jsxs)("div",{className:"mx-auto max-w-xl space-y-4 p-6 text-center",children:[(0,b.jsx)("h1",{className:"text-xl font-semibold",children:"Algo salió mal"}),(0,b.jsx)("p",{className:"text-sm text-muted-foreground",children:a.message||"Intenta nuevamente o reduce el tamaño/cantidad de archivos."}),(0,b.jsxs)("div",{className:"flex justify-center gap-3",children:[(0,b.jsx)(c.Button,{onClick:d,children:"Reintentar"}),(0,b.jsx)(c.Button,{variant:"outline",onClick:()=>window.location.href="/panel",children:"Volver al panel"})]})]})}a.s(["default",()=>d])}];
+
+//# sourceMappingURL=v1_emprende_upc_app_panel_error_tsx_efcb556d._.js.map

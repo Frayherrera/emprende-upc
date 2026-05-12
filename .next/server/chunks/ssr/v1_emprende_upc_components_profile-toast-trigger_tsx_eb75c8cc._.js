@@ -1,0 +1,3 @@
+module.exports=[48852,a=>{"use strict";var b=a.i(63134),c=a.i(79783),d=a.i(36331);function e(){let a=(0,c.useSearchParams)(),e=(0,c.useRouter)(),f="1"===a.get("updated"),g=a.get("error"),h=(0,b.useRef)(!1),i=(0,b.useMemo)(()=>{let b=new URLSearchParams(a.toString());b.delete("updated"),b.delete("error");let c=b.toString();return`/perfil${c?`?${c}`:""}`},[a]);return(0,b.useEffect)(()=>{!h.current&&(g?(h.current=!0,d.toast.error("No se pudo guardar",{description:g}),e.replace(i,{scroll:!1})):f&&(h.current=!0,d.toast.success("Perfil actualizado",{description:"Tus cambios se guardaron correctamente."}),e.replace(i,{scroll:!1})))},[f,g,e,i]),null}a.s(["ProfileToastTrigger",()=>e])}];
+
+//# sourceMappingURL=v1_emprende_upc_components_profile-toast-trigger_tsx_eb75c8cc._.js.map

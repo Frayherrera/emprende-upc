@@ -1,0 +1,10 @@
+:HL["/_next/static/chunks/5d9eb668df81fb12.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.dbea232f.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.853070df.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["https://emudv7nnrgztkt9l.public.blob.vercel-storage.com/covers/new-cmoqiudc40002yuuyfy2e5q9j-1778005379746.png","image"]
+:HL["https://emudv7nnrgztkt9l.public.blob.vercel-storage.com/covers/new-cmoqiudc40002yuuyfy2e5q9j-1778004767377.png","image"]
+:HL["https://emudv7nnrgztkt9l.public.blob.vercel-storage.com/covers/new-cmoqiudc40002yuuyfy2e5q9j-1778004595680.png","image"]
+:HL["https://emudv7nnrgztkt9l.public.blob.vercel-storage.com/covers/new-cmoqiudc40002yuuyfy2e5q9j-1778004407469.png","image"]
+:HL["https://emudv7nnrgztkt9l.public.blob.vercel-storage.com/covers/new-cmoqiudc40002yuuyfy2e5q9j-1778001692971.png","image"]
+:HL["https://emudv7nnrgztkt9l.public.blob.vercel-storage.com/covers/new-cmoqiudc40002yuuyfy2e5q9j-1777996624708.png","image"]
+0:{"buildId":"G9ujFuQDr258WKYq6uwDk","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":true},"staleTime":300}

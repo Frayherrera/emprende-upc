@@ -1,0 +1,11 @@
+var R=require("../../../../chunks/[turbopack]_runtime.js")("server/app/api/auth/[...nextauth]/route.js")
+R.c("server/chunks/e494d_next_4b3247dc._.js")
+R.c("server/chunks/e494d_@opentelemetry_api_build_esm_f1aa6108._.js")
+R.c("server/chunks/e494d_next-auth_6f7bb00d._.js")
+R.c("server/chunks/e494d_openid-client_99ae1c74._.js")
+R.c("server/chunks/e494d_jose_dist_node_cjs_53f00595._.js")
+R.c("server/chunks/[root-of-the-server]__4d5ec6e3._.js")
+R.c("server/chunks/[root-of-the-server]__5bdf656e._.js")
+R.c("server/chunks/a33f3_upc__next-internal_server_app_api_auth_[___nextauth]_route_actions_d5dc6360.js")
+R.m("[project]/v1_emprende_upc/node_modules/next/dist/esm/build/templates/app-route.js { INNER_APP_ROUTE => \"[project]/v1_emprende_upc/app/api/auth/[...nextauth]/route.ts [app-route] (ecmascript)\" } [app-route] (ecmascript)")
+module.exports=R.m("[project]/v1_emprende_upc/node_modules/next/dist/esm/build/templates/app-route.js { INNER_APP_ROUTE => \"[project]/v1_emprende_upc/app/api/auth/[...nextauth]/route.ts [app-route] (ecmascript)\" } [app-route] (ecmascript)").exports

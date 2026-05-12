@@ -1,0 +1,50 @@
+{
+  "node": {
+    "407283470581d2414b5c5c69181780096ee99366a8": {
+      "workers": {
+        "app/admin/page": {
+          "moduleId": 4832,
+          "async": false,
+          "exportedName": "$$RSC_SERVER_ACTION_2",
+          "filename": "v1_emprende_upc/app/admin/page.tsx"
+        }
+      },
+      "layer": {
+        "app/admin/page": "rsc"
+      },
+      "exportedName": "$$RSC_SERVER_ACTION_2",
+      "filename": "v1_emprende_upc/app/admin/page.tsx"
+    },
+    "40c61315feccd34bc4353c1cd4199ae9a8bd441be9": {
+      "workers": {
+        "app/admin/page": {
+          "moduleId": 4832,
+          "async": false,
+          "exportedName": "$$RSC_SERVER_ACTION_1",
+          "filename": "v1_emprende_upc/app/admin/page.tsx"
+        }
+      },
+      "layer": {
+        "app/admin/page": "rsc"
+      },
+      "exportedName": "$$RSC_SERVER_ACTION_1",
+      "filename": "v1_emprende_upc/app/admin/page.tsx"
+    },
+    "40d41c49263a6fa69cd09309df762d446a34b40163": {
+      "workers": {
+        "app/admin/page": {
+          "moduleId": 4832,
+          "async": false,
+          "exportedName": "$$RSC_SERVER_ACTION_0",
+          "filename": "v1_emprende_upc/app/admin/page.tsx"
+        }
+      },
+      "layer": {
+        "app/admin/page": "rsc"
+      },
+      "exportedName": "$$RSC_SERVER_ACTION_0",
+      "filename": "v1_emprende_upc/app/admin/page.tsx"
+    }
+  },
+  "edge": {}
+}

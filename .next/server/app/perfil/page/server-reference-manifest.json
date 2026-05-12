@@ -1,0 +1,20 @@
+{
+  "node": {
+    "606fdf1c143a1ba91d062946fb070938f1b6862e20": {
+      "workers": {
+        "app/perfil/page": {
+          "moduleId": 29056,
+          "async": false,
+          "exportedName": "$$RSC_SERVER_ACTION_0",
+          "filename": "v1_emprende_upc/app/perfil/page.tsx"
+        }
+      },
+      "layer": {
+        "app/perfil/page": "rsc"
+      },
+      "exportedName": "$$RSC_SERVER_ACTION_0",
+      "filename": "v1_emprende_upc/app/perfil/page.tsx"
+    }
+  },
+  "edge": {}
+}

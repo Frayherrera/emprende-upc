@@ -1,0 +1,3 @@
+module.exports=[51649,a=>{"use strict";var b=a.i(49828),c=a.i(79783);let d=(0,a.i(72176).default)("ArrowLeft",[["path",{d:"m12 19-7-7 7-7",key:"1l729n"}],["path",{d:"M19 12H5",key:"x3x0zl"}]]);var e=a.i(1531);function f(){let a=(0,c.useRouter)();return(0,b.jsxs)(e.Button,{variant:"ghost",size:"sm",className:"w-fit",onClick:()=>a.back(),children:[(0,b.jsx)(d,{className:"mr-1.5 h-4 w-4"}),"Volver"]})}a.s(["BackButton",()=>f],51649)}];
+
+//# sourceMappingURL=v1_emprende_upc_app_usuarios_%5Bid%5D_back-button_tsx_0e7cb411._.js.map

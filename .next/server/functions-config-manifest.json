@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "functions": {
+    "/api/auth/[...nextauth]": {
+      "regions": [
+        "auto"
+      ]
+    },
+    "/api/chat": {},
+    "/api/register": {
+      "regions": [
+        "auto"
+      ]
+    },
+    "/formacion/open": {}
+  }
+}

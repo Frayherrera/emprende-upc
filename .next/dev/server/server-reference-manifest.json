@@ -1,0 +1,201 @@
+{
+  "node": {
+    "6001d7823308017d447149bd79168bb63786022b3a": {
+      "workers": {
+        "app/panel/nuevo/page": {
+          "moduleId": "[project]/v1_emprende_upc/.next-internal/server/app/panel/nuevo/page/actions.js { ACTIONS_MODULE0 => \"[project]/v1_emprende_upc/app/panel/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "createVenture",
+          "filename": "v1_emprende_upc/app/panel/actions.ts"
+        }
+      },
+      "layer": {
+        "app/panel/nuevo/page": "rsc"
+      },
+      "filename": "v1_emprende_upc/app/panel/actions.ts",
+      "exportedName": "createVenture"
+    },
+    "6036873d6c992b03895c873ad0865ea3e723b39b06": {
+      "workers": {
+        "app/panel/nuevo/page": {
+          "moduleId": "[project]/v1_emprende_upc/.next-internal/server/app/panel/nuevo/page/actions.js { ACTIONS_MODULE0 => \"[project]/v1_emprende_upc/app/panel/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "deleteVenture",
+          "filename": "v1_emprende_upc/app/panel/actions.ts"
+        }
+      },
+      "layer": {
+        "app/panel/nuevo/page": "rsc"
+      },
+      "filename": "v1_emprende_upc/app/panel/actions.ts",
+      "exportedName": "deleteVenture"
+    },
+    "605a2756ea2b3003e5c6681d8b4a9cc50376d6e48a": {
+      "workers": {
+        "app/panel/nuevo/page": {
+          "moduleId": "[project]/v1_emprende_upc/.next-internal/server/app/panel/nuevo/page/actions.js { ACTIONS_MODULE0 => \"[project]/v1_emprende_upc/app/panel/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "addAttachment",
+          "filename": "v1_emprende_upc/app/panel/actions.ts"
+        }
+      },
+      "layer": {
+        "app/panel/nuevo/page": "rsc"
+      },
+      "filename": "v1_emprende_upc/app/panel/actions.ts",
+      "exportedName": "addAttachment"
+    },
+    "6069be6bb61be68f83775cca639987af7b77b9fba9": {
+      "workers": {
+        "app/panel/nuevo/page": {
+          "moduleId": "[project]/v1_emprende_upc/.next-internal/server/app/panel/nuevo/page/actions.js { ACTIONS_MODULE0 => \"[project]/v1_emprende_upc/app/panel/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "updateVentureLogo",
+          "filename": "v1_emprende_upc/app/panel/actions.ts"
+        }
+      },
+      "layer": {
+        "app/panel/nuevo/page": "rsc"
+      },
+      "filename": "v1_emprende_upc/app/panel/actions.ts",
+      "exportedName": "updateVentureLogo"
+    },
+    "60721df1cacee669d14398467c103d7bbe7b1d928c": {
+      "workers": {
+        "app/panel/nuevo/page": {
+          "moduleId": "[project]/v1_emprende_upc/.next-internal/server/app/panel/nuevo/page/actions.js { ACTIONS_MODULE0 => \"[project]/v1_emprende_upc/app/panel/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "updateVenture",
+          "filename": "v1_emprende_upc/app/panel/actions.ts"
+        }
+      },
+      "layer": {
+        "app/panel/nuevo/page": "rsc"
+      },
+      "filename": "v1_emprende_upc/app/panel/actions.ts",
+      "exportedName": "updateVenture"
+    },
+    "609d9bc398ae76ed6a435d3b1af13dfb6e75ff01cb": {
+      "workers": {
+        "app/panel/nuevo/page": {
+          "moduleId": "[project]/v1_emprende_upc/.next-internal/server/app/panel/nuevo/page/actions.js { ACTIONS_MODULE0 => \"[project]/v1_emprende_upc/app/panel/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "removeVentureLogo",
+          "filename": "v1_emprende_upc/app/panel/actions.ts"
+        }
+      },
+      "layer": {
+        "app/panel/nuevo/page": "rsc"
+      },
+      "filename": "v1_emprende_upc/app/panel/actions.ts",
+      "exportedName": "removeVentureLogo"
+    },
+    "60a0c3577b854bf242719d8fc7c9b67cb433c31bbc": {
+      "workers": {
+        "app/panel/nuevo/page": {
+          "moduleId": "[project]/v1_emprende_upc/.next-internal/server/app/panel/nuevo/page/actions.js { ACTIONS_MODULE0 => \"[project]/v1_emprende_upc/app/panel/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "updateVentureCover",
+          "filename": "v1_emprende_upc/app/panel/actions.ts"
+        }
+      },
+      "layer": {
+        "app/panel/nuevo/page": "rsc"
+      },
+      "filename": "v1_emprende_upc/app/panel/actions.ts",
+      "exportedName": "updateVentureCover"
+    },
+    "60d990dc9d3a8fac0385585e16be315cdce565b918": {
+      "workers": {
+        "app/panel/nuevo/page": {
+          "moduleId": "[project]/v1_emprende_upc/.next-internal/server/app/panel/nuevo/page/actions.js { ACTIONS_MODULE0 => \"[project]/v1_emprende_upc/app/panel/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "deleteAttachment",
+          "filename": "v1_emprende_upc/app/panel/actions.ts"
+        }
+      },
+      "layer": {
+        "app/panel/nuevo/page": "rsc"
+      },
+      "filename": "v1_emprende_upc/app/panel/actions.ts",
+      "exportedName": "deleteAttachment"
+    },
+    "60e12c32d73807ef7a220bff1a3fac43e5a7af4e3a": {
+      "workers": {
+        "app/panel/nuevo/page": {
+          "moduleId": "[project]/v1_emprende_upc/.next-internal/server/app/panel/nuevo/page/actions.js { ACTIONS_MODULE0 => \"[project]/v1_emprende_upc/app/panel/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "renameAttachment",
+          "filename": "v1_emprende_upc/app/panel/actions.ts"
+        }
+      },
+      "layer": {
+        "app/panel/nuevo/page": "rsc"
+      },
+      "filename": "v1_emprende_upc/app/panel/actions.ts",
+      "exportedName": "renameAttachment"
+    },
+    "60eca9adb335cd29893bf12b372596982b1aa66672": {
+      "workers": {
+        "app/panel/nuevo/page": {
+          "moduleId": "[project]/v1_emprende_upc/.next-internal/server/app/panel/nuevo/page/actions.js { ACTIONS_MODULE0 => \"[project]/v1_emprende_upc/app/panel/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "removeVentureCover",
+          "filename": "v1_emprende_upc/app/panel/actions.ts"
+        }
+      },
+      "layer": {
+        "app/panel/nuevo/page": "rsc"
+      },
+      "filename": "v1_emprende_upc/app/panel/actions.ts",
+      "exportedName": "removeVentureCover"
+    },
+    "4079b1a9cca46aa198647bed5d86b5be15e10495b4": {
+      "workers": {
+        "app/admin/page": {
+          "moduleId": "[project]/v1_emprende_upc/.next-internal/server/app/admin/page/actions.js { ACTIONS_MODULE0 => \"[project]/v1_emprende_upc/app/admin/page.tsx [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "$$RSC_SERVER_ACTION_2",
+          "filename": "v1_emprende_upc/app/admin/page.tsx"
+        }
+      },
+      "layer": {
+        "app/admin/page": "rsc"
+      },
+      "filename": "v1_emprende_upc/app/admin/page.tsx",
+      "exportedName": "$$RSC_SERVER_ACTION_2"
+    },
+    "40bfd08f275e5d93edc31ada794c4e97dd1b78c86c": {
+      "workers": {
+        "app/admin/page": {
+          "moduleId": "[project]/v1_emprende_upc/.next-internal/server/app/admin/page/actions.js { ACTIONS_MODULE0 => \"[project]/v1_emprende_upc/app/admin/page.tsx [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "$$RSC_SERVER_ACTION_1",
+          "filename": "v1_emprende_upc/app/admin/page.tsx"
+        }
+      },
+      "layer": {
+        "app/admin/page": "rsc"
+      },
+      "filename": "v1_emprende_upc/app/admin/page.tsx",
+      "exportedName": "$$RSC_SERVER_ACTION_1"
+    },
+    "40d5c2be506c5d75e579f8e73fafb5ede4ff28f341": {
+      "workers": {
+        "app/admin/page": {
+          "moduleId": "[project]/v1_emprende_upc/.next-internal/server/app/admin/page/actions.js { ACTIONS_MODULE0 => \"[project]/v1_emprende_upc/app/admin/page.tsx [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "$$RSC_SERVER_ACTION_0",
+          "filename": "v1_emprende_upc/app/admin/page.tsx"
+        }
+      },
+      "layer": {
+        "app/admin/page": "rsc"
+      },
+      "filename": "v1_emprende_upc/app/admin/page.tsx",
+      "exportedName": "$$RSC_SERVER_ACTION_0"
+    }
+  },
+  "edge": {},
+  "encryptionKey": "wEokHnLeY1HBTMW7OWI9gz6lCKGtbc285omF3kF6WcU="
+}

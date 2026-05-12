@@ -1,0 +1,50 @@
+{
+  "node": {
+    "4079b1a9cca46aa198647bed5d86b5be15e10495b4": {
+      "workers": {
+        "app/admin/page": {
+          "moduleId": "[project]/v1_emprende_upc/.next-internal/server/app/admin/page/actions.js { ACTIONS_MODULE0 => \"[project]/v1_emprende_upc/app/admin/page.tsx [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "$$RSC_SERVER_ACTION_2",
+          "filename": "v1_emprende_upc/app/admin/page.tsx"
+        }
+      },
+      "layer": {
+        "app/admin/page": "rsc"
+      },
+      "exportedName": "$$RSC_SERVER_ACTION_2",
+      "filename": "v1_emprende_upc/app/admin/page.tsx"
+    },
+    "40bfd08f275e5d93edc31ada794c4e97dd1b78c86c": {
+      "workers": {
+        "app/admin/page": {
+          "moduleId": "[project]/v1_emprende_upc/.next-internal/server/app/admin/page/actions.js { ACTIONS_MODULE0 => \"[project]/v1_emprende_upc/app/admin/page.tsx [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "$$RSC_SERVER_ACTION_1",
+          "filename": "v1_emprende_upc/app/admin/page.tsx"
+        }
+      },
+      "layer": {
+        "app/admin/page": "rsc"
+      },
+      "exportedName": "$$RSC_SERVER_ACTION_1",
+      "filename": "v1_emprende_upc/app/admin/page.tsx"
+    },
+    "40d5c2be506c5d75e579f8e73fafb5ede4ff28f341": {
+      "workers": {
+        "app/admin/page": {
+          "moduleId": "[project]/v1_emprende_upc/.next-internal/server/app/admin/page/actions.js { ACTIONS_MODULE0 => \"[project]/v1_emprende_upc/app/admin/page.tsx [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "$$RSC_SERVER_ACTION_0",
+          "filename": "v1_emprende_upc/app/admin/page.tsx"
+        }
+      },
+      "layer": {
+        "app/admin/page": "rsc"
+      },
+      "exportedName": "$$RSC_SERVER_ACTION_0",
+      "filename": "v1_emprende_upc/app/admin/page.tsx"
+    }
+  },
+  "edge": {}
+}

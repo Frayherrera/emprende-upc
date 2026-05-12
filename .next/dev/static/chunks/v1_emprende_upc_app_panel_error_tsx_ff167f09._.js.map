@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///home/fray/v1_emprende_upc/app/panel/error.tsx"],"sourcesContent":["\"use client\";\n\nimport { Button } from \"@/components/ui/button\";\n\nexport default function PanelError({ error, reset }: { error: Error; reset: () => void }) {\n  return (\n    <div className=\"mx-auto max-w-xl space-y-4 p-6 text-center\">\n      <h1 className=\"text-xl font-semibold\">Algo salió mal</h1>\n      <p className=\"text-sm text-muted-foreground\">\n        {error.message || \"Intenta nuevamente o reduce el tamaño/cantidad de archivos.\"}\n      </p>\n      <div className=\"flex justify-center gap-3\">\n        <Button onClick={reset}>Reintentar</Button>\n        <Button variant=\"outline\" onClick={() => (window.location.href = \"/panel\")}>Volver al panel</Button>\n      </div>\n    </div>\n  );\n}\n"],"names":[],"mappings":";;;;;AAEA;AAFA;;;AAIe,SAAS,WAAW,EAAE,KAAK,EAAE,KAAK,EAAuC;IACtF,qBACE,gNAAC;QAAI,WAAU;;0BACb,gNAAC;gBAAG,WAAU;0BAAwB;;;;;;0BACtC,gNAAC;gBAAE,WAAU;0BACV,MAAM,OAAO,IAAI;;;;;;0BAEpB,gNAAC;gBAAI,WAAU;;kCACb,gNAAC,2JAAM;wBAAC,SAAS;kCAAO;;;;;;kCACxB,gNAAC,2JAAM;wBAAC,SAAQ;wBAAU,SAAS,IAAO,OAAO,QAAQ,CAAC,IAAI,GAAG;kCAAW;;;;;;;;;;;;;;;;;;AAIpF;KAbwB"}}]
+}

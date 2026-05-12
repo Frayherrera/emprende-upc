@@ -1,0 +1,155 @@
+{
+  "node": {
+    "600465a513cdae8580af381689a9a0e80ec486c5b6": {
+      "workers": {
+        "app/panel/[id]/page": {
+          "moduleId": 23182,
+          "async": false,
+          "exportedName": "createVenture",
+          "filename": "v1_emprende_upc/app/panel/actions.ts"
+        }
+      },
+      "layer": {
+        "app/panel/[id]/page": "rsc"
+      },
+      "exportedName": "createVenture",
+      "filename": "v1_emprende_upc/app/panel/actions.ts"
+    },
+    "600b68892c3a3554f4bc608dc0e25108b40f835425": {
+      "workers": {
+        "app/panel/[id]/page": {
+          "moduleId": 23182,
+          "async": false,
+          "exportedName": "removeVentureLogo",
+          "filename": "v1_emprende_upc/app/panel/actions.ts"
+        }
+      },
+      "layer": {
+        "app/panel/[id]/page": "rsc"
+      },
+      "exportedName": "removeVentureLogo",
+      "filename": "v1_emprende_upc/app/panel/actions.ts"
+    },
+    "60372045a4df489e4b99de857f7d9be5b46b92682e": {
+      "workers": {
+        "app/panel/[id]/page": {
+          "moduleId": 23182,
+          "async": false,
+          "exportedName": "deleteAttachment",
+          "filename": "v1_emprende_upc/app/panel/actions.ts"
+        }
+      },
+      "layer": {
+        "app/panel/[id]/page": "rsc"
+      },
+      "exportedName": "deleteAttachment",
+      "filename": "v1_emprende_upc/app/panel/actions.ts"
+    },
+    "60391962adf93d8deb2c9a0b45ae4421cb5abc89e9": {
+      "workers": {
+        "app/panel/[id]/page": {
+          "moduleId": 23182,
+          "async": false,
+          "exportedName": "removeVentureCover",
+          "filename": "v1_emprende_upc/app/panel/actions.ts"
+        }
+      },
+      "layer": {
+        "app/panel/[id]/page": "rsc"
+      },
+      "exportedName": "removeVentureCover",
+      "filename": "v1_emprende_upc/app/panel/actions.ts"
+    },
+    "60517af6634c0f166f7cd0dae299c4c201b16c020e": {
+      "workers": {
+        "app/panel/[id]/page": {
+          "moduleId": 23182,
+          "async": false,
+          "exportedName": "updateVenture",
+          "filename": "v1_emprende_upc/app/panel/actions.ts"
+        }
+      },
+      "layer": {
+        "app/panel/[id]/page": "rsc"
+      },
+      "exportedName": "updateVenture",
+      "filename": "v1_emprende_upc/app/panel/actions.ts"
+    },
+    "606025a51a69b82d373add2beae9b1664158c6bd61": {
+      "workers": {
+        "app/panel/[id]/page": {
+          "moduleId": 23182,
+          "async": false,
+          "exportedName": "addAttachment",
+          "filename": "v1_emprende_upc/app/panel/actions.ts"
+        }
+      },
+      "layer": {
+        "app/panel/[id]/page": "rsc"
+      },
+      "exportedName": "addAttachment",
+      "filename": "v1_emprende_upc/app/panel/actions.ts"
+    },
+    "606b02ca39f45044c6e9099e1595730d85d097ef05": {
+      "workers": {
+        "app/panel/[id]/page": {
+          "moduleId": 23182,
+          "async": false,
+          "exportedName": "deleteVenture",
+          "filename": "v1_emprende_upc/app/panel/actions.ts"
+        }
+      },
+      "layer": {
+        "app/panel/[id]/page": "rsc"
+      },
+      "exportedName": "deleteVenture",
+      "filename": "v1_emprende_upc/app/panel/actions.ts"
+    },
+    "606cee224c23c43769bd729fc8c7828bf700dd7fb0": {
+      "workers": {
+        "app/panel/[id]/page": {
+          "moduleId": 23182,
+          "async": false,
+          "exportedName": "renameAttachment",
+          "filename": "v1_emprende_upc/app/panel/actions.ts"
+        }
+      },
+      "layer": {
+        "app/panel/[id]/page": "rsc"
+      },
+      "exportedName": "renameAttachment",
+      "filename": "v1_emprende_upc/app/panel/actions.ts"
+    },
+    "6072464e0dde9bc4a53be10b3066ae7d3c256dc5a6": {
+      "workers": {
+        "app/panel/[id]/page": {
+          "moduleId": 23182,
+          "async": false,
+          "exportedName": "updateVentureLogo",
+          "filename": "v1_emprende_upc/app/panel/actions.ts"
+        }
+      },
+      "layer": {
+        "app/panel/[id]/page": "rsc"
+      },
+      "exportedName": "updateVentureLogo",
+      "filename": "v1_emprende_upc/app/panel/actions.ts"
+    },
+    "609ec38db660216636a1f86e3e2d022c097d806691": {
+      "workers": {
+        "app/panel/[id]/page": {
+          "moduleId": 23182,
+          "async": false,
+          "exportedName": "updateVentureCover",
+          "filename": "v1_emprende_upc/app/panel/actions.ts"
+        }
+      },
+      "layer": {
+        "app/panel/[id]/page": "rsc"
+      },
+      "exportedName": "updateVentureCover",
+      "filename": "v1_emprende_upc/app/panel/actions.ts"
+    }
+  },
+  "edge": {}
+}
