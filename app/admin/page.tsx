@@ -467,7 +467,7 @@ export default async function AdminPage({
             </div>
           </div>
 <div className="grid gap-4 md:grid-cols-3">
-  <StatCard title="Emprendimientos" value={ventureCount} description="Total histórico de proyectos creados." color="#10b981" unit="Proyectos" data={venturesSeries} icon={IconVenture} rangeDays={trendDays} />
+  <StatCard title="Emprendimientos " value={ventureCount} description="Total histórico de proyectos creados." color="#10b981" unit="Proyectos" data={venturesSeries} icon={IconVenture} rangeDays={trendDays} />
   <StatCard title="Pendientes" value={pendingCount} description="Proyectos sin publicar en este momento." color="#f59e0b" unit="Proyectos" data={venturesSeries} icon={IconVenture} rangeDays={trendDays} />
   <StatCard title="Usuarios" value={userCount} description="Usuarios acumulados en la plataforma." color="#0ea5e9" unit="Usuarios" data={usersSeries} icon={IconUsers} rangeDays={trendDays} />
 </div>
