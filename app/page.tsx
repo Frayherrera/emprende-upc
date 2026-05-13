@@ -109,7 +109,7 @@ export default async function Home() {
             src="/portrait.png"
             alt="Emprende UPC portada"
             fill
-            className="object-cover"
+            className="object-contain md:object-cover"
             priority
             sizes="100vw"
           />

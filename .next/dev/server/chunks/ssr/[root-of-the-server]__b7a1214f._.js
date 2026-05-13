@@ -339,7 +339,7 @@ async function Home() {
                         src: "/portrait.png",
                         alt: "Emprende UPC portada",
                         fill: true,
-                        className: "object-cover",
+                        className: "object-contain md:object-cover",
                         priority: true,
                         sizes: "100vw"
                     }, void 0, false, {
