@@ -7,4 +7,4 @@
 :HL["https://emudv7nnrgztkt9l.public.blob.vercel-storage.com/covers/new-cmoqiudc40002yuuyfy2e5q9j-1778004407469.png","image"]
 :HL["https://emudv7nnrgztkt9l.public.blob.vercel-storage.com/covers/new-cmoqiudc40002yuuyfy2e5q9j-1778001692971.png","image"]
 :HL["https://emudv7nnrgztkt9l.public.blob.vercel-storage.com/covers/new-cmoqiudc40002yuuyfy2e5q9j-1777996624708.png","image"]
-0:{"buildId":"G9ujFuQDr258WKYq6uwDk","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
+0:{"buildId":"DqVWcrURn3p6jzkDTJ72y","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
