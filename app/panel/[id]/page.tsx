@@ -63,6 +63,7 @@ export default async function VentureDetailPage({
       title: true,
       summary: true,
       stage: true,
+      category: true,
       tags: true,
       instagram: true,
       facebook: true,
@@ -182,6 +183,23 @@ export default async function VentureDetailPage({
                     <option value="PROTOTYPE">Prototipo</option>
                     <option value="MVP">MVP</option>
                     <option value="GROWTH">Crecimiento</option>
+                  </select>
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="category">Categoría</Label>
+                  <select
+                    id="category"
+                    name="category"
+                    className="h-11 w-full rounded-md border border-input bg-background px-3 text-sm"
+                    defaultValue={venture.category ?? ""}
+                  >
+                    <option value="">Selecciona una categoría</option>
+                    <option value="TECNOLOGIA">Tecnología</option>
+                    <option value="COMERCIO">Comercio</option>
+                    <option value="SERVICIOS">Servicios</option>
+                    <option value="ALIMENTOS">Alimentos</option>
+                    <option value="MODA">Moda</option>
+                    <option value="EDUCACION">Educación</option>
                   </select>
                 </div>
                 <div className="space-y-2">

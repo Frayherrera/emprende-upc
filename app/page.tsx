@@ -14,6 +14,8 @@ import {
 } from "lucide-react";
 
 import { prisma } from "@/lib/prisma";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -79,6 +81,9 @@ const stageLabel: Record<string, string> = {
 
 
 export default async function Home() {
+  const session = await getServerSession(authOptions);
+  const isLoggedIn = !!session?.user?.id;
+
   // Obtener emprendimientos destacados
   const featured = await prisma.venture.findMany({
     where: { featured: true, published: true },
@@ -148,29 +153,31 @@ export default async function Home() {
           </div>
         </section>
 
-        <section className="space-y-6">
-          <div className="space-y-2">
-            <h2 className="text-2xl font-semibold uppercase">Cómo funciona</h2>
-            <p className="text-muted-foreground">
-              Tres pasos para salir a producción en el programa institucional.
-            </p>
-          </div>
-          <div className="grid gap-4 md:grid-cols-3">
-            {steps.map((step) => (
-              <Card key={step.title} className="h-full">
-                <CardHeader className="flex flex-row items-center gap-3 space-y-0">
-                  <div className="rounded-lg bg-primary/10 p-2 text-primary">
-                    <step.icon className="h-5 w-5" />
-                  </div>
-                  <CardTitle className="text-base">{step.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">{step.desc}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </section>
+        {!isLoggedIn && (
+          <section className="space-y-6">
+            <div className="space-y-2">
+              <h2 className="text-2xl font-semibold uppercase">Cómo funciona</h2>
+              <p className="text-muted-foreground">
+                Tres pasos para salir a producción en el programa institucional.
+              </p>
+            </div>
+            <div className="grid gap-4 md:grid-cols-3">
+              {steps.map((step) => (
+                <Card key={step.title} className="h-full">
+                  <CardHeader className="flex flex-row items-center gap-3 space-y-0">
+                    <div className="rounded-lg bg-primary/10 p-2 text-primary">
+                      <step.icon className="h-5 w-5" />
+                    </div>
+                    <CardTitle className="text-base">{step.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-muted-foreground">{step.desc}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </section>
+        )}
 
         <section className="space-y-6">
           <div className="space-y-2">

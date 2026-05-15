@@ -72,6 +72,22 @@ export default async function NuevoEmprendimientoPage() {
                   </select>
                 </div>
                 <div className="space-y-2">
+                  <Label htmlFor="category">Categoría</Label>
+                  <select
+                    id="category"
+                    name="category"
+                    className="h-11 w-full rounded-md border border-input bg-background px-3 text-sm"
+                  >
+                    <option value="">Selecciona una categoría</option>
+                    <option value="TECNOLOGIA">Tecnología</option>
+                    <option value="COMERCIO">Comercio</option>
+                    <option value="SERVICIOS">Servicios</option>
+                    <option value="ALIMENTOS">Alimentos</option>
+                    <option value="MODA">Moda</option>
+                    <option value="EDUCACION">Educación</option>
+                  </select>
+                </div>
+                <div className="space-y-2">
                   <Label htmlFor="tags">Etiquetas (usa hashtags)</Label>
                   <Input id="tags" name="tags" placeholder="#fintech #impacto #salud" />
                 </div>

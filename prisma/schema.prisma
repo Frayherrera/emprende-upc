@@ -58,6 +58,7 @@ model Venture {
   actividadEconomica  String?    @db.Text
   impactoSocial       String?    @db.Text
   objetivos           String?    @db.Text
+  category      Category?
   contactNumber String?
   logoKey       String?
   coverKey      String?
@@ -185,4 +186,13 @@ enum MessageRole {
 enum UserType {
   ESTUDIANTE
   EGRESADO
+}
+
+enum Category {
+  TECNOLOGIA
+  COMERCIO
+  SERVICIOS
+  ALIMENTOS
+  MODA
+  EDUCACION
 }
