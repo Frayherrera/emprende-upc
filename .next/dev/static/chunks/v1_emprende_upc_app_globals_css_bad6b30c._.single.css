@@ -614,10 +614,6 @@
     display: table;
   }
 
-  .aspect-\[3\/4\] {
-    aspect-ratio: 3 / 4;
-  }
-
   .aspect-square {
     aspect-ratio: 1;
   }
@@ -2685,12 +2681,6 @@
   }
 
   @media (min-width: 48rem) {
-    .md\:aspect-\[16\/9\] {
-      aspect-ratio: 16 / 9;
-    }
-  }
-
-  @media (min-width: 48rem) {
     .md\:h-28 {
       height: calc(var(--spacing) * 28);
     }
@@ -2783,12 +2773,6 @@
   @media (min-width: 48rem) {
     .md\:px-10 {
       padding-inline: calc(var(--spacing) * 10);
-    }
-  }
-
-  @media (min-width: 64rem) {
-    .lg\:aspect-\[21\/9\] {
-      aspect-ratio: 21 / 9;
     }
   }
 

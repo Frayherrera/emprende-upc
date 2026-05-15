@@ -81,7 +81,7 @@ const stageLabel: Record<string, string> = {
 export default async function Home() {
   // Obtener emprendimientos destacados
   const featured = await prisma.venture.findMany({
-    where: { published: true },
+    where: { featured: true, published: true },
     orderBy: { createdAt: "desc" },
     take: 6,
     select: {
