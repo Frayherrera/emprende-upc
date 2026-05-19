@@ -23,6 +23,7 @@ import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import {
   addAttachment,
+  addAttachments,
   deleteAttachment,
   deleteVenture,
   removeVentureLogo,
@@ -94,6 +95,7 @@ export default async function VentureDetailPage({
   const updateVentureAction = updateVenture.bind(null, session.user.id);
   const deleteVentureAction = deleteVenture.bind(null, session.user.id);
   const addAttachmentAction = addAttachment.bind(null, session.user.id);
+  const addAttachmentsAction = addAttachments.bind(null, session.user.id);
   const updateCoverAction = updateVentureCover.bind(null, session.user.id);
   const removeCoverAction = removeVentureCover.bind(null, session.user.id);
   const updateLogoAction = updateVentureLogo.bind(null, session.user.id);
@@ -365,6 +367,46 @@ export default async function VentureDetailPage({
                 Subir archivo
               </Button>
               <p className="text-xs text-muted-foreground">Sube un archivo por vez. Máx 8MB por archivo.</p>
+            </form>
+          </CardContent>
+        </Card>
+
+        <Card className="border-border/70 bg-card/90 shadow-sm">
+          <CardHeader className="space-y-2 pb-2">
+            <CardTitle className="text-xl">Imágenes del emprendimiento</CardTitle>
+            <CardDescription>Galería de imágenes asociadas al proyecto. Sube varias imágenes a la vez.</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-5">
+            {venture.attachments.filter((a) => a.mimeType?.startsWith("image/")).length === 0 ? (
+              <p className="text-sm text-muted-foreground">No hay imágenes por ahora.</p>
+            ) : (
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                {venture.attachments
+                  .filter((a) => a.mimeType?.startsWith("image/"))
+                  .map((att) => (
+                    <div key={att.id} className="rounded-lg bg-background/80 p-2 text-sm shadow-sm">
+                      <img src={att.url} alt={att.name} className="h-28 w-full rounded-md object-cover" />
+                      <div className="mt-2 flex items-center justify-between">
+                        <AttachmentPreviewButton url={att.url} name={att.name} mime={att.mimeType} />
+                        <DeleteAttachmentButton
+                          action={deleteAttachmentAction}
+                          attachmentId={att.id}
+                          redirectTo={redirectTo}
+                          name={att.name}
+                          data-preserve-form="update-venture"
+                        />
+                      </div>
+                    </div>
+                  ))}
+              </div>
+            )}
+
+            <form action={addAttachmentsAction} className="space-y-3" data-preserve-form="update-venture">
+              <input type="hidden" name="ventureId" value={venture.id} />
+              <input type="hidden" name="redirectTo" value={redirectTo} />
+              <Input name="files" id="files" type="file" className="text-sm" accept="image/png,image/jpeg,image/webp" multiple />
+              <Button type="submit" size="sm" className="w-full">Subir imágenes</Button>
+              <p className="text-xs text-muted-foreground">Puedes seleccionar varias imágenes. Máx 8MB por archivo.</p>
             </form>
           </CardContent>
         </Card>

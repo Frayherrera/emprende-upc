@@ -423,6 +423,67 @@ export async function addAttachment(userId: string, formData: FormData) {
   redirect(`${redirectTo}?ok=1`);
 }
 
+export async function addAttachments(userId: string, formData: FormData) {
+  const ventureId = formData.get("ventureId")?.toString();
+  if (!ventureId) redirect("/panel?error=ID%20faltante");
+
+  const files = formData.getAll("files") as File[];
+  if (!files || files.length === 0) redirect("/panel?error=Sube%20al%20menos%20un%20archivo.");
+
+  const allowed = [
+    "application/pdf",
+    "image/png",
+    "image/jpeg",
+    "image/webp",
+    "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+    "application/vnd.ms-powerpoint",
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "application/msword",
+  ];
+
+  const venture = await prisma.venture.findUnique({
+    where: { id: ventureId, ownerId: userId },
+    select: { id: true },
+  });
+  if (!venture) redirect("/panel?error=No%20autorizado.");
+
+  if (!process.env.BLOB_READ_WRITE_TOKEN) redirect("/panel?error=Falta%20BLOB_READ_WRITE_TOKEN");
+
+  try {
+    for (const file of files) {
+      if (!file || file.size === 0) continue;
+      if (file.type && !allowed.includes(file.type)) continue;
+      if (file.size > MAX_FILE_SIZE) continue;
+
+      const ext = file.name.split(".").pop() || "bin";
+      const blob = await put(`attachments/${ventureId}-${Date.now()}.${ext}`, file, {
+        access: "public",
+        token: process.env.BLOB_READ_WRITE_TOKEN,
+        contentType: file.type || undefined,
+      });
+
+      await prisma.attachment.create({
+        data: {
+          ventureId: ventureId,
+          name: file.name,
+          url: blob.url,
+          blobKey: blob.url,
+          mimeType: file.type || null,
+          size: file.size,
+        },
+      });
+    }
+  } catch (err) {
+    console.error("upload error", err);
+    redirect("/panel?error=No%20se%20pudo%20subir%20los%20archivos.%20Intenta%20de%20nuevo.");
+  }
+
+  const redirectTo = formData.get("redirectTo")?.toString() || `/panel/${ventureId}`;
+  revalidatePath("/panel");
+  revalidatePath(redirectTo);
+  redirect(`${redirectTo}?ok=1`);
+}
+
 export async function deleteAttachment(userId: string, formData: FormData) {
   const attachmentId = formData.get("attachmentId")?.toString();
   if (!attachmentId) redirect("/panel?error=ID%20faltante");

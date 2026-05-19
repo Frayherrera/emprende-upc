@@ -153,9 +153,11 @@ if ("TURBOPACK compile-time truthy", 1) globalForPrisma.prisma = prisma;
 "[project]/v1_emprende_upc/app/panel/actions.ts [app-rsc] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
-/* __next_internal_action_entry_do_not_use__ [{"6001d7823308017d447149bd79168bb63786022b3a":"createVenture","6036873d6c992b03895c873ad0865ea3e723b39b06":"deleteVenture","605a2756ea2b3003e5c6681d8b4a9cc50376d6e48a":"addAttachment","6069be6bb61be68f83775cca639987af7b77b9fba9":"updateVentureLogo","60721df1cacee669d14398467c103d7bbe7b1d928c":"updateVenture","609d9bc398ae76ed6a435d3b1af13dfb6e75ff01cb":"removeVentureLogo","60a0c3577b854bf242719d8fc7c9b67cb433c31bbc":"updateVentureCover","60d990dc9d3a8fac0385585e16be315cdce565b918":"deleteAttachment","60e12c32d73807ef7a220bff1a3fac43e5a7af4e3a":"renameAttachment","60eca9adb335cd29893bf12b372596982b1aa66672":"removeVentureCover"},"",""] */ __turbopack_context__.s([
+/* __next_internal_action_entry_do_not_use__ [{"6001d7823308017d447149bd79168bb63786022b3a":"createVenture","60318c2ae4807e1185880a005b73b67c4d5e2683d3":"addAttachments","6036873d6c992b03895c873ad0865ea3e723b39b06":"deleteVenture","605a2756ea2b3003e5c6681d8b4a9cc50376d6e48a":"addAttachment","6069be6bb61be68f83775cca639987af7b77b9fba9":"updateVentureLogo","60721df1cacee669d14398467c103d7bbe7b1d928c":"updateVenture","609d9bc398ae76ed6a435d3b1af13dfb6e75ff01cb":"removeVentureLogo","60a0c3577b854bf242719d8fc7c9b67cb433c31bbc":"updateVentureCover","60d990dc9d3a8fac0385585e16be315cdce565b918":"deleteAttachment","60e12c32d73807ef7a220bff1a3fac43e5a7af4e3a":"renameAttachment","60eca9adb335cd29893bf12b372596982b1aa66672":"removeVentureCover"},"",""] */ __turbopack_context__.s([
     "addAttachment",
     ()=>addAttachment,
+    "addAttachments",
+    ()=>addAttachments,
     "createVenture",
     ()=>createVenture,
     "deleteAttachment",
@@ -651,6 +653,63 @@ async function addAttachment(userId, formData) {
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$cache$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["revalidatePath"])(redirectTo);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$client$2f$components$2f$navigation$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["redirect"])(`${redirectTo}?ok=1`);
 }
+async function addAttachments(userId, formData) {
+    const ventureId = formData.get("ventureId")?.toString();
+    if (!ventureId) (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$client$2f$components$2f$navigation$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["redirect"])("/panel?error=ID%20faltante");
+    const files = formData.getAll("files");
+    if (!files || files.length === 0) (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$client$2f$components$2f$navigation$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["redirect"])("/panel?error=Sube%20al%20menos%20un%20archivo.");
+    const allowed = [
+        "application/pdf",
+        "image/png",
+        "image/jpeg",
+        "image/webp",
+        "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+        "application/vnd.ms-powerpoint",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "application/msword"
+    ];
+    const venture = await __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].venture.findUnique({
+        where: {
+            id: ventureId,
+            ownerId: userId
+        },
+        select: {
+            id: true
+        }
+    });
+    if (!venture) (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$client$2f$components$2f$navigation$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["redirect"])("/panel?error=No%20autorizado.");
+    if (!process.env.BLOB_READ_WRITE_TOKEN) (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$client$2f$components$2f$navigation$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["redirect"])("/panel?error=Falta%20BLOB_READ_WRITE_TOKEN");
+    try {
+        for (const file of files){
+            if (!file || file.size === 0) continue;
+            if (file.type && !allowed.includes(file.type)) continue;
+            if (file.size > MAX_FILE_SIZE) continue;
+            const ext = file.name.split(".").pop() || "bin";
+            const blob = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f40$vercel$2f$blob$2f$dist$2f$index$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__$3c$locals$3e$__["put"])(`attachments/${ventureId}-${Date.now()}.${ext}`, file, {
+                access: "public",
+                token: process.env.BLOB_READ_WRITE_TOKEN,
+                contentType: file.type || undefined
+            });
+            await __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].attachment.create({
+                data: {
+                    ventureId: ventureId,
+                    name: file.name,
+                    url: blob.url,
+                    blobKey: blob.url,
+                    mimeType: file.type || null,
+                    size: file.size
+                }
+            });
+        }
+    } catch (err) {
+        console.error("upload error", err);
+        (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$client$2f$components$2f$navigation$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["redirect"])("/panel?error=No%20se%20pudo%20subir%20los%20archivos.%20Intenta%20de%20nuevo.");
+    }
+    const redirectTo = formData.get("redirectTo")?.toString() || `/panel/${ventureId}`;
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$cache$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["revalidatePath"])("/panel");
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$cache$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["revalidatePath"])(redirectTo);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$client$2f$components$2f$navigation$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["redirect"])(`${redirectTo}?ok=1`);
+}
 async function deleteAttachment(userId, formData) {
     const attachmentId = formData.get("attachmentId")?.toString();
     if (!attachmentId) (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$client$2f$components$2f$navigation$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["redirect"])("/panel?error=ID%20faltante");
@@ -723,6 +782,7 @@ async function renameAttachment(userId, formData) {
     removeVentureLogo,
     deleteVenture,
     addAttachment,
+    addAttachments,
     deleteAttachment,
     renameAttachment
 ]);
@@ -734,6 +794,7 @@ async function renameAttachment(userId, formData) {
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(removeVentureLogo, "609d9bc398ae76ed6a435d3b1af13dfb6e75ff01cb", null);
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(deleteVenture, "6036873d6c992b03895c873ad0865ea3e723b39b06", null);
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(addAttachment, "605a2756ea2b3003e5c6681d8b4a9cc50376d6e48a", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(addAttachments, "60318c2ae4807e1185880a005b73b67c4d5e2683d3", null);
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(deleteAttachment, "60d990dc9d3a8fac0385585e16be315cdce565b918", null);
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(renameAttachment, "60e12c32d73807ef7a220bff1a3fac43e5a7af4e3a", null);
 }),
@@ -752,6 +813,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$app$2f$pa
 ;
 ;
 ;
+;
 }),
 "[project]/v1_emprende_upc/.next-internal/server/app/panel/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/v1_emprende_upc/app/panel/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)", ((__turbopack_context__) => {
 "use strict";
@@ -759,6 +821,8 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$app$2f$pa
 __turbopack_context__.s([
     "6001d7823308017d447149bd79168bb63786022b3a",
     ()=>__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$app$2f$panel$2f$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["createVenture"],
+    "60318c2ae4807e1185880a005b73b67c4d5e2683d3",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$app$2f$panel$2f$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["addAttachments"],
     "6036873d6c992b03895c873ad0865ea3e723b39b06",
     ()=>__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$app$2f$panel$2f$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["deleteVenture"],
     "605a2756ea2b3003e5c6681d8b4a9cc50376d6e48a",

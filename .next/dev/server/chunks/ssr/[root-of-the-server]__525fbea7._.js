@@ -710,95 +710,11 @@ async function NuevoEmprendimientoPage() {
                                                     className: "space-y-2",
                                                     children: [
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Label"], {
-                                                            htmlFor: "category",
-                                                            children: "Categoría"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                            lineNumber: 75,
-                                                            columnNumber: 19
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
-                                                            id: "category",
-                                                            name: "category",
-                                                            className: "h-11 w-full rounded-md border border-input bg-background px-3 text-sm",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                                                    value: "",
-                                                                    children: "Selecciona una categoría"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                                    lineNumber: 81,
-                                                                    columnNumber: 21
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                                                    value: "TECNOLOGIA",
-                                                                    children: "Tecnología"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                                    lineNumber: 82,
-                                                                    columnNumber: 21
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                                                    value: "COMERCIO",
-                                                                    children: "Comercio"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                                    lineNumber: 83,
-                                                                    columnNumber: 21
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                                                    value: "SERVICIOS",
-                                                                    children: "Servicios"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                                    lineNumber: 84,
-                                                                    columnNumber: 21
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                                                    value: "ALIMENTOS",
-                                                                    children: "Alimentos"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                                    lineNumber: 85,
-                                                                    columnNumber: 21
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                                                    value: "MODA",
-                                                                    children: "Moda"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                                    lineNumber: 86,
-                                                                    columnNumber: 21
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                                                    value: "EDUCACION",
-                                                                    children: "Educación"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                                    lineNumber: 87,
-                                                                    columnNumber: 21
-                                                                }, this)
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                            lineNumber: 76,
-                                                            columnNumber: 19
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                    lineNumber: 74,
-                                                    columnNumber: 17
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "space-y-2",
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Label"], {
                                                             htmlFor: "tags",
                                                             children: "Etiquetas (usa hashtags)"
                                                         }, void 0, false, {
                                                             fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                            lineNumber: 91,
+                                                            lineNumber: 76,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Input"], {
@@ -807,13 +723,13 @@ async function NuevoEmprendimientoPage() {
                                                             placeholder: "#fintech #impacto #salud"
                                                         }, void 0, false, {
                                                             fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                            lineNumber: 92,
+                                                            lineNumber: 77,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                    lineNumber: 90,
+                                                    lineNumber: 75,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -824,7 +740,7 @@ async function NuevoEmprendimientoPage() {
                                                             children: "Número de contacto"
                                                         }, void 0, false, {
                                                             fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                            lineNumber: 95,
+                                                            lineNumber: 80,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Input"], {
@@ -833,13 +749,13 @@ async function NuevoEmprendimientoPage() {
                                                             placeholder: "3001234567"
                                                         }, void 0, false, {
                                                             fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                            lineNumber: 96,
+                                                            lineNumber: 81,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                    lineNumber: 94,
+                                                    lineNumber: 79,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -850,7 +766,7 @@ async function NuevoEmprendimientoPage() {
                                                             children: "Instagram"
                                                         }, void 0, false, {
                                                             fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                            lineNumber: 99,
+                                                            lineNumber: 84,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Input"], {
@@ -859,13 +775,13 @@ async function NuevoEmprendimientoPage() {
                                                             placeholder: "@miemprendimiento o https://instagram.com/miemprendimiento"
                                                         }, void 0, false, {
                                                             fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                            lineNumber: 100,
+                                                            lineNumber: 85,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                    lineNumber: 98,
+                                                    lineNumber: 83,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -876,7 +792,7 @@ async function NuevoEmprendimientoPage() {
                                                             children: "Facebook"
                                                         }, void 0, false, {
                                                             fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                            lineNumber: 103,
+                                                            lineNumber: 88,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Input"], {
@@ -885,13 +801,13 @@ async function NuevoEmprendimientoPage() {
                                                             placeholder: "https://facebook.com/miemprendimiento"
                                                         }, void 0, false, {
                                                             fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                            lineNumber: 104,
+                                                            lineNumber: 89,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                    lineNumber: 102,
+                                                    lineNumber: 87,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -902,7 +818,7 @@ async function NuevoEmprendimientoPage() {
                                                             children: "Logo (opcional)"
                                                         }, void 0, false, {
                                                             fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                            lineNumber: 107,
+                                                            lineNumber: 92,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Input"], {
@@ -913,7 +829,7 @@ async function NuevoEmprendimientoPage() {
                                                             className: "text-sm"
                                                         }, void 0, false, {
                                                             fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                            lineNumber: 108,
+                                                            lineNumber: 93,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -921,13 +837,13 @@ async function NuevoEmprendimientoPage() {
                                                             children: "Formatos: PNG, JPG o WEBP. Máx 8MB."
                                                         }, void 0, false, {
                                                             fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                            lineNumber: 109,
+                                                            lineNumber: 94,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                    lineNumber: 106,
+                                                    lineNumber: 91,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
@@ -961,20 +877,20 @@ async function NuevoEmprendimientoPage() {
                                                         children: "Sobre tu emprendimiento"
                                                     }, void 0, false, {
                                                         fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                        lineNumber: 119,
+                                                        lineNumber: 104,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["CardDescription"], {
                                                         children: "Cuéntanos más sobre tu emprendimiento y el impacto que deseas generar."
                                                     }, void 0, false, {
                                                         fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                        lineNumber: 120,
+                                                        lineNumber: 105,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                lineNumber: 118,
+                                                lineNumber: 103,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -989,51 +905,109 @@ async function NuevoEmprendimientoPage() {
                                                                     className: "h-4 w-4"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                                    lineNumber: 127,
+                                                                    lineNumber: 112,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                                lineNumber: 126,
+                                                                lineNumber: 111,
                                                                 columnNumber: 19
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                 className: "flex-1 space-y-2",
-                                                                children: [
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Label"], {
-                                                                        htmlFor: "razonSocial",
-                                                                        children: "Razón social"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                                        lineNumber: 130,
-                                                                        columnNumber: 21
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                                        className: "text-xs text-muted-foreground",
-                                                                        children: "Nombre legal o razón social de tu emprendimiento."
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                                        lineNumber: 131,
-                                                                        columnNumber: 21
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Input"], {
-                                                                        id: "razonSocial",
-                                                                        name: "razonSocial"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                                        lineNumber: 132,
-                                                                        columnNumber: 21
-                                                                    }, this)
-                                                                ]
-                                                            }, void 0, true, {
+                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                    className: "space-y-2",
+                                                                    children: [
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Label"], {
+                                                                            htmlFor: "category",
+                                                                            children: "Razon social"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
+                                                                            lineNumber: 116,
+                                                                            columnNumber: 19
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
+                                                                            id: "category",
+                                                                            name: "category",
+                                                                            className: "h-11 w-full rounded-md border border-input bg-background px-3 text-sm",
+                                                                            children: [
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                                                                    value: "",
+                                                                                    children: "Selecciona una categoría"
+                                                                                }, void 0, false, {
+                                                                                    fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
+                                                                                    lineNumber: 122,
+                                                                                    columnNumber: 21
+                                                                                }, this),
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                                                                    value: "TECNOLOGIA",
+                                                                                    children: "Tecnología"
+                                                                                }, void 0, false, {
+                                                                                    fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
+                                                                                    lineNumber: 123,
+                                                                                    columnNumber: 21
+                                                                                }, this),
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                                                                    value: "COMERCIO",
+                                                                                    children: "Comercio"
+                                                                                }, void 0, false, {
+                                                                                    fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
+                                                                                    lineNumber: 124,
+                                                                                    columnNumber: 21
+                                                                                }, this),
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                                                                    value: "SERVICIOS",
+                                                                                    children: "Servicios"
+                                                                                }, void 0, false, {
+                                                                                    fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
+                                                                                    lineNumber: 125,
+                                                                                    columnNumber: 21
+                                                                                }, this),
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                                                                    value: "ALIMENTOS",
+                                                                                    children: "Alimentos"
+                                                                                }, void 0, false, {
+                                                                                    fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
+                                                                                    lineNumber: 126,
+                                                                                    columnNumber: 21
+                                                                                }, this),
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                                                                    value: "MODA",
+                                                                                    children: "Moda"
+                                                                                }, void 0, false, {
+                                                                                    fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
+                                                                                    lineNumber: 127,
+                                                                                    columnNumber: 21
+                                                                                }, this),
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                                                                    value: "EDUCACION",
+                                                                                    children: "Educación"
+                                                                                }, void 0, false, {
+                                                                                    fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
+                                                                                    lineNumber: 128,
+                                                                                    columnNumber: 21
+                                                                                }, this)
+                                                                            ]
+                                                                        }, void 0, true, {
+                                                                            fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
+                                                                            lineNumber: 117,
+                                                                            columnNumber: 19
+                                                                        }, this)
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
+                                                                    lineNumber: 115,
+                                                                    columnNumber: 21
+                                                                }, this)
+                                                            }, void 0, false, {
                                                                 fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                                lineNumber: 129,
+                                                                lineNumber: 114,
                                                                 columnNumber: 19
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                        lineNumber: 125,
+                                                        lineNumber: 110,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1045,12 +1019,12 @@ async function NuevoEmprendimientoPage() {
                                                                     className: "h-4 w-4"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                                    lineNumber: 139,
+                                                                    lineNumber: 137,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                                lineNumber: 138,
+                                                                lineNumber: 136,
                                                                 columnNumber: 19
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1061,7 +1035,7 @@ async function NuevoEmprendimientoPage() {
                                                                         children: "Actividad económica"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                                        lineNumber: 142,
+                                                                        lineNumber: 140,
                                                                         columnNumber: 21
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1069,7 +1043,7 @@ async function NuevoEmprendimientoPage() {
                                                                         children: "¿A qué actividad económica se dedica tu emprendimiento?"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                                        lineNumber: 143,
+                                                                        lineNumber: 141,
                                                                         columnNumber: 21
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$textarea$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Textarea"], {
@@ -1078,19 +1052,19 @@ async function NuevoEmprendimientoPage() {
                                                                         className: "min-h-24 resize-none"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                                        lineNumber: 144,
+                                                                        lineNumber: 142,
                                                                         columnNumber: 21
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                                lineNumber: 141,
+                                                                lineNumber: 139,
                                                                 columnNumber: 19
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                        lineNumber: 137,
+                                                        lineNumber: 135,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1102,12 +1076,12 @@ async function NuevoEmprendimientoPage() {
                                                                     className: "h-4 w-4"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                                    lineNumber: 151,
+                                                                    lineNumber: 149,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                                lineNumber: 150,
+                                                                lineNumber: 148,
                                                                 columnNumber: 19
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1118,7 +1092,7 @@ async function NuevoEmprendimientoPage() {
                                                                         children: "Objeto o impacto social"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                                        lineNumber: 154,
+                                                                        lineNumber: 152,
                                                                         columnNumber: 21
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1126,7 +1100,7 @@ async function NuevoEmprendimientoPage() {
                                                                         children: "¿Cuál es el propósito de tu emprendimiento y qué impacto social genera?"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                                        lineNumber: 155,
+                                                                        lineNumber: 153,
                                                                         columnNumber: 21
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$textarea$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Textarea"], {
@@ -1135,19 +1109,19 @@ async function NuevoEmprendimientoPage() {
                                                                         className: "min-h-24 resize-none"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                                        lineNumber: 156,
+                                                                        lineNumber: 154,
                                                                         columnNumber: 21
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                                lineNumber: 153,
+                                                                lineNumber: 151,
                                                                 columnNumber: 19
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                        lineNumber: 149,
+                                                        lineNumber: 147,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1159,12 +1133,12 @@ async function NuevoEmprendimientoPage() {
                                                                     className: "h-4 w-4"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                                    lineNumber: 163,
+                                                                    lineNumber: 161,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                                lineNumber: 162,
+                                                                lineNumber: 160,
                                                                 columnNumber: 19
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1175,7 +1149,7 @@ async function NuevoEmprendimientoPage() {
                                                                         children: "¿Qué quieres lograr?"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                                        lineNumber: 166,
+                                                                        lineNumber: 164,
                                                                         columnNumber: 21
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1183,7 +1157,7 @@ async function NuevoEmprendimientoPage() {
                                                                         children: "Cuéntanos cuáles son tus objetivos a corto, mediano o largo plazo."
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                                        lineNumber: 167,
+                                                                        lineNumber: 165,
                                                                         columnNumber: 21
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$textarea$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Textarea"], {
@@ -1192,31 +1166,31 @@ async function NuevoEmprendimientoPage() {
                                                                         className: "min-h-24 resize-none"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                                        lineNumber: 168,
+                                                                        lineNumber: 166,
                                                                         columnNumber: 21
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                                lineNumber: 165,
+                                                                lineNumber: 163,
                                                                 columnNumber: 19
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                        lineNumber: 161,
+                                                        lineNumber: 159,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                lineNumber: 122,
+                                                lineNumber: 107,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                        lineNumber: 117,
+                                        lineNumber: 102,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Card"], {
@@ -1230,20 +1204,20 @@ async function NuevoEmprendimientoPage() {
                                                         children: "Adjuntos"
                                                     }, void 0, false, {
                                                         fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                        lineNumber: 178,
+                                                        lineNumber: 176,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["CardDescription"], {
                                                         children: "Para evitar errores por carga pesada, primero publica el emprendimiento y luego sube adjuntos uno por uno en la página de detalle."
                                                     }, void 0, false, {
                                                         fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                        lineNumber: 179,
+                                                        lineNumber: 177,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                lineNumber: 177,
+                                                lineNumber: 175,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -1252,24 +1226,24 @@ async function NuevoEmprendimientoPage() {
                                                     children: "Podrás subir cada archivo en el detalle del emprendimiento (máx 8MB por archivo)."
                                                 }, void 0, false, {
                                                     fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                    lineNumber: 184,
+                                                    lineNumber: 182,
                                                     columnNumber: 17
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                                lineNumber: 183,
+                                                lineNumber: 181,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                        lineNumber: 176,
+                                        lineNumber: 174,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                lineNumber: 116,
+                                lineNumber: 101,
                                 columnNumber: 11
                             }, this)
                         ]
@@ -1289,38 +1263,38 @@ async function NuevoEmprendimientoPage() {
                                         children: "Portada"
                                     }, void 0, false, {
                                         fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                        lineNumber: 193,
+                                        lineNumber: 191,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["CardDescription"], {
                                         children: "Sube una imagen horizontal para la portada pública (opcional)."
                                     }, void 0, false, {
                                         fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                        lineNumber: 194,
+                                        lineNumber: 192,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                lineNumber: 192,
+                                lineNumber: 190,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["CardContent"], {
                                 className: "space-y-4",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$panel$2f$cover$2d$picker$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["CoverPicker"], {}, void 0, false, {
                                     fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                    lineNumber: 197,
+                                    lineNumber: 195,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                                lineNumber: 196,
+                                lineNumber: 194,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                        lineNumber: 191,
+                        lineNumber: 189,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1332,12 +1306,12 @@ async function NuevoEmprendimientoPage() {
                             children: "Publicar"
                         }, void 0, false, {
                             fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                            lineNumber: 202,
+                            lineNumber: 200,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/v1_emprende_upc/app/panel/nuevo/page.tsx",
-                        lineNumber: 201,
+                        lineNumber: 199,
                         columnNumber: 9
                     }, this)
                 ]

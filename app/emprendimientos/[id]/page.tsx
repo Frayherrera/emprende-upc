@@ -266,66 +266,31 @@ export default async function VenturePublicPage({
       )}
 
 
-      <div className="grid gap-6 md:grid-cols-2">
-        <Card className="border-border/70 bg-card/90 shadow-sm">
-          <CardHeader className="space-y-2 pb-2">
-            <CardTitle className="text-lg">Actualizaciones</CardTitle>
-            <CardDescription>Últimos avances compartidos.</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4 text-sm">
-            {venture.updates.length === 0 ? (
-              <p className="text-muted-foreground">Aún no hay actualizaciones.</p>
-            ) : (
-              venture.updates.map((update) => (
-                <div key={update.id} className="rounded-lg border border-border/60 bg-background/80 p-3 shadow-sm">
-                  <p className="text-xs text-muted-foreground">
-                    {new Intl.DateTimeFormat("es", { dateStyle: "medium" }).format(new Date(update.createdAt))}
-                  </p>
-                  <p className="mt-2 whitespace-pre-wrap leading-relaxed">{update.content}</p>
-                </div>
-              ))
-            )}
-          </CardContent>
-        </Card>
-
-        <Card className="border-border/70 bg-card/90 shadow-sm">
-          <CardHeader className="space-y-2 pb-2">
-            <CardTitle className="text-lg">Adjuntos</CardTitle>
-            <CardDescription>Archivos compartidos por el equipo.</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-3 text-sm">
-            {venture.attachments.length === 0 ? (
-              <p className="text-muted-foreground">Sin archivos por ahora.</p>
-            ) : (
-              <ul className="space-y-3">
-                {venture.attachments.map((att) => (
-                  <li key={att.id} className="rounded-lg border border-border/60 bg-background/80 p-3 shadow-sm">
-                    <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                      <div>
-                        <p className="font-medium text-foreground">{att.name}</p>
-                        <p className="text-xs text-muted-foreground">
-                          {new Intl.DateTimeFormat("es", { dateStyle: "medium" }).format(new Date(att.createdAt))}
-                        </p>
-                      </div>
-                      <a
-                        href={att.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="text-sm font-semibold text-primary underline-offset-4 hover:underline"
-                      >
-                        Ver archivo
-                      </a>
-                    </div>
-                    {att.size ? (
-                      <p className="text-xs text-muted-foreground">{(att.size / 1024).toFixed(1)} KB</p>
-                    ) : null}
-                  </li>
+      <Card className="border-border/70 bg-card/90 shadow-sm">
+        <CardHeader className="space-y-2 pb-2">
+          <CardTitle className="text-xl">Imágenes</CardTitle>
+          <CardDescription>Galería de imágenes públicas asociadas al emprendimiento.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          {venture.attachments.filter((a) => a.mimeType?.startsWith("image/")).length === 0 ? (
+            <p className="text-muted-foreground">No hay imágenes publicadas para este emprendimiento.</p>
+          ) : (
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+              {venture.attachments
+                .filter((a) => a.mimeType?.startsWith("image/"))
+                .map((att) => (
+                  <div key={att.id} className="rounded-lg border border-border/60 bg-background/80 p-2 shadow-sm">
+                    <a href={att.url} target="_blank" rel="noreferrer">
+                      <img src={att.url} alt={att.name} className="h-32 w-full rounded-md object-cover" />
+                    </a>
+                  </div>
                 ))}
-              </ul>
-            )}
-          </CardContent>
-        </Card>
-      </div>
+            </div>
+          )}
+        </CardContent>
+      </Card>
+
+ 
     </main>
   );
 }

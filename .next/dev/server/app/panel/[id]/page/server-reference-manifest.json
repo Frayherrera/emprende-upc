@@ -15,6 +15,21 @@
       "exportedName": "createVenture",
       "filename": "v1_emprende_upc/app/panel/actions.ts"
     },
+    "60318c2ae4807e1185880a005b73b67c4d5e2683d3": {
+      "workers": {
+        "app/panel/[id]/page": {
+          "moduleId": "[project]/v1_emprende_upc/.next-internal/server/app/panel/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/v1_emprende_upc/app/panel/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "addAttachments",
+          "filename": "v1_emprende_upc/app/panel/actions.ts"
+        }
+      },
+      "layer": {
+        "app/panel/[id]/page": "rsc"
+      },
+      "exportedName": "addAttachments",
+      "filename": "v1_emprende_upc/app/panel/actions.ts"
+    },
     "6036873d6c992b03895c873ad0865ea3e723b39b06": {
       "workers": {
         "app/panel/[id]/page": {
