@@ -814,6 +814,10 @@
     width: calc(var(--spacing) * 16);
   }
 
+  .w-40 {
+    width: calc(var(--spacing) * 40);
+  }
+
   .w-48 {
     width: calc(var(--spacing) * 48);
   }
@@ -1245,6 +1249,16 @@
 
   .bg-background {
     background-color: hsl(var(--background));
+  }
+
+  .bg-background\/60 {
+    background-color: hsl(var(--background));
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .bg-background\/60 {
+      background-color: color-mix(in oklab, hsl(var(--background)) 60%, transparent);
+    }
   }
 
   .bg-background\/70 {
@@ -1841,6 +1855,10 @@
 
   .text-left {
     text-align: left;
+  }
+
+  .text-right {
+    text-align: right;
   }
 
   .text-2xl {

@@ -317,6 +317,23 @@ export default async function AdminPage({
   const trainingSeries = buildDailySeries(trendDays, now, trainingTrend.map((x) => x.openedAt));
   const attachmentsSeries = buildDailySeries(trendDays, now, attachmentsTrend.map((x) => x.createdAt));
 
+  // Conteo de emprendimientos por programa (agrupar por profile.program)
+  const ventureProgramRows = await prisma.venture.findMany({
+    select: { owner: { select: { profile: { select: { program: true } } } } },
+  });
+
+  const programCountsMap = new Map<string, number>();
+  for (const row of ventureProgramRows) {
+    const program = row.owner?.profile?.program?.toString().trim() || "Sin programa";
+    programCountsMap.set(program, (programCountsMap.get(program) || 0) + 1);
+  }
+
+  const programCounts = Array.from(programCountsMap.entries())
+    .map(([program, count]) => ({ program, count }))
+    .sort((a, b) => b.count - a.count);
+
+  const programMax = programCounts.length ? Math.max(...programCounts.map((p) => p.count)) : 1;
+
   const trendSeries = [
     { key: "users", title: "Usuarios nuevos", color: "#0ea5e9", data: usersSeries },
     { key: "ventures", title: "Emprendimientos creados", color: "#10b981", data: venturesSeries },
@@ -620,14 +637,38 @@ export default async function AdminPage({
     </CardContent>
   </Card>
 </div> */}
-
           <Card>
             <CardHeader>
-              <CardTitle>Actividad reciente de la plataforma</CardTitle>
-              <p className="text-sm text-muted-foreground">Filtra por tipo de evento y carga más resultados para revisar el historial.</p>
-              <ActivityRecentControls
-                activityType={activityType}
-              />
+              <CardTitle>Emprendimientos por programa</CardTitle>
+              <p className="text-sm text-muted-foreground">Número de emprendimientos agrupados por programa (perfil de usuario).</p>
+            </CardHeader>
+            <CardContent>
+              {programCounts.length === 0 ? (
+                <p className="text-sm text-muted-foreground">No hay datos de programas.</p>
+              ) : (
+                <div className="space-y-3">
+                  {programCounts.map((p) => (
+                    <div key={p.program} className="flex items-center gap-3">
+                      <div className="w-40 text-sm text-foreground truncate">{p.program}</div>
+                      <div className="flex-1 bg-background/60 h-3 rounded-full overflow-hidden">
+                        <div className="h-3 bg-primary" style={{ width: `${(p.count / programMax) * 100}%` }} />
+                      </div>
+                      <div className="w-12 text-right text-sm text-foreground">{p.count}</div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </CardContent>
+          </Card>
+          <Card className="border-border/70 bg-card/90 shadow-sm">
+            <CardHeader className="space-y-4">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <CardTitle>Actividad reciente de la plataforma</CardTitle>
+                  <p className="text-sm text-muted-foreground">Filtra por tipo de evento y carga más resultados para revisar el historial.</p>
+                </div>
+                <ActivityRecentControls activityType={activityType} />
+              </div>
             </CardHeader>
             <CardContent className="space-y-3">
               {recentActivity.length === 0 && (
@@ -650,7 +691,6 @@ export default async function AdminPage({
                   canLoadMore={canLoadMoreActivity}
                 />
               </div>
-
             </CardContent>
           </Card>
         </>

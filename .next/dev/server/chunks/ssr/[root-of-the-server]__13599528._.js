@@ -1327,6 +1327,30 @@ async function AdminPage({ searchParams }) {
     const messagesSeries = buildDailySeries(trendDays, now, messagesTrend.map((x)=>x.createdAt));
     const trainingSeries = buildDailySeries(trendDays, now, trainingTrend.map((x)=>x.openedAt));
     const attachmentsSeries = buildDailySeries(trendDays, now, attachmentsTrend.map((x)=>x.createdAt));
+    // Conteo de emprendimientos por programa (agrupar por profile.program)
+    const ventureProgramRows = await __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].venture.findMany({
+        select: {
+            owner: {
+                select: {
+                    profile: {
+                        select: {
+                            program: true
+                        }
+                    }
+                }
+            }
+        }
+    });
+    const programCountsMap = new Map();
+    for (const row of ventureProgramRows){
+        const program = row.owner?.profile?.program?.toString().trim() || "Sin programa";
+        programCountsMap.set(program, (programCountsMap.get(program) || 0) + 1);
+    }
+    const programCounts = Array.from(programCountsMap.entries()).map(([program, count])=>({
+            program,
+            count
+        })).sort((a, b)=>b.count - a.count);
+    const programMax = programCounts.length ? Math.max(...programCounts.map((p)=>p.count)) : 1;
     const trendSeries = [
         {
             key: "users",
@@ -1451,7 +1475,7 @@ async function AdminPage({ searchParams }) {
                         children: "ADMINISTRACIÓN"
                     }, void 0, false, {
                         fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                        lineNumber: 431,
+                        lineNumber: 448,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1459,13 +1483,13 @@ async function AdminPage({ searchParams }) {
                         children: "Acceso exclusivo para administradores."
                     }, void 0, false, {
                         fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                        lineNumber: 432,
+                        lineNumber: 449,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                lineNumber: 430,
+                lineNumber: 447,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1477,7 +1501,7 @@ async function AdminPage({ searchParams }) {
                         children: "Estadísticas"
                     }, void 0, false, {
                         fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                        lineNumber: 436,
+                        lineNumber: 453,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
@@ -1486,7 +1510,7 @@ async function AdminPage({ searchParams }) {
                         children: "Usuarios"
                     }, void 0, false, {
                         fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                        lineNumber: 439,
+                        lineNumber: 456,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
@@ -1495,7 +1519,7 @@ async function AdminPage({ searchParams }) {
                         children: "Emprendimientos"
                     }, void 0, false, {
                         fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                        lineNumber: 442,
+                        lineNumber: 459,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
@@ -1504,13 +1528,13 @@ async function AdminPage({ searchParams }) {
                         children: "Módulos de formación"
                     }, void 0, false, {
                         fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                        lineNumber: 445,
+                        lineNumber: 462,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                lineNumber: 435,
+                lineNumber: 452,
                 columnNumber: 7
             }, this),
             activeTab === "stats" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -1525,7 +1549,7 @@ async function AdminPage({ searchParams }) {
                                         children: "Rango de análisis"
                                     }, void 0, false, {
                                         fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                        lineNumber: 454,
+                                        lineNumber: 471,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1537,13 +1561,13 @@ async function AdminPage({ searchParams }) {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                        lineNumber: 455,
+                                        lineNumber: 472,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                lineNumber: 453,
+                                lineNumber: 470,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1561,18 +1585,18 @@ async function AdminPage({ searchParams }) {
                                         ]
                                     }, days, true, {
                                         fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                        lineNumber: 459,
+                                        lineNumber: 476,
                                         columnNumber: 17
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                lineNumber: 457,
+                                lineNumber: 474,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                        lineNumber: 452,
+                        lineNumber: 469,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1589,7 +1613,7 @@ async function AdminPage({ searchParams }) {
                                 rangeDays: trendDays
                             }, void 0, false, {
                                 fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                lineNumber: 470,
+                                lineNumber: 487,
                                 columnNumber: 3
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$admin$2f$stat$2d$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["StatCard"], {
@@ -1603,7 +1627,7 @@ async function AdminPage({ searchParams }) {
                                 rangeDays: trendDays
                             }, void 0, false, {
                                 fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                lineNumber: 471,
+                                lineNumber: 488,
                                 columnNumber: 3
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$admin$2f$stat$2d$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["StatCard"], {
@@ -1617,13 +1641,13 @@ async function AdminPage({ searchParams }) {
                                 rangeDays: trendDays
                             }, void 0, false, {
                                 fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                lineNumber: 472,
+                                lineNumber: 489,
                                 columnNumber: 3
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                        lineNumber: 469,
+                        lineNumber: 486,
                         columnNumber: 1
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1641,7 +1665,7 @@ async function AdminPage({ searchParams }) {
                                 rangeDays: statsRangeDays
                             }, void 0, false, {
                                 fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                lineNumber: 476,
+                                lineNumber: 493,
                                 columnNumber: 3
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$admin$2f$stat$2d$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["StatCard"], {
@@ -1656,7 +1680,7 @@ async function AdminPage({ searchParams }) {
                                 rangeDays: statsRangeDays
                             }, void 0, false, {
                                 fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                lineNumber: 477,
+                                lineNumber: 494,
                                 columnNumber: 3
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$admin$2f$stat$2d$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["StatCard"], {
@@ -1671,13 +1695,13 @@ async function AdminPage({ searchParams }) {
                                 rangeDays: statsRangeDays
                             }, void 0, false, {
                                 fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                lineNumber: 478,
+                                lineNumber: 495,
                                 columnNumber: 3
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                        lineNumber: 475,
+                        lineNumber: 492,
                         columnNumber: 1
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1695,7 +1719,7 @@ async function AdminPage({ searchParams }) {
                                 rangeDays: statsRangeDays
                             }, void 0, false, {
                                 fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                lineNumber: 482,
+                                lineNumber: 499,
                                 columnNumber: 3
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$admin$2f$stat$2d$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["StatCard"], {
@@ -1709,7 +1733,7 @@ async function AdminPage({ searchParams }) {
                                 rangeDays: trendDays
                             }, void 0, false, {
                                 fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                lineNumber: 483,
+                                lineNumber: 500,
                                 columnNumber: 3
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$admin$2f$stat$2d$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["StatCard"], {
@@ -1723,13 +1747,13 @@ async function AdminPage({ searchParams }) {
                                 rangeDays: trendDays
                             }, void 0, false, {
                                 fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                lineNumber: 484,
+                                lineNumber: 501,
                                 columnNumber: 3
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                        lineNumber: 481,
+                        lineNumber: 498,
                         columnNumber: 1
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Card"], {
@@ -1737,31 +1761,141 @@ async function AdminPage({ searchParams }) {
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["CardHeader"], {
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["CardTitle"], {
-                                        children: "Actividad reciente de la plataforma"
+                                        children: "Emprendimientos por programa"
                                     }, void 0, false, {
                                         fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                        lineNumber: 626,
+                                        lineNumber: 642,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         className: "text-sm text-muted-foreground",
-                                        children: "Filtra por tipo de evento y carga más resultados para revisar el historial."
+                                        children: "Número de emprendimientos agrupados por programa (perfil de usuario)."
                                     }, void 0, false, {
                                         fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                        lineNumber: 627,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$app$2f$admin$2f$filters$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["ActivityRecentControls"], {
-                                        activityType: activityType
-                                    }, void 0, false, {
-                                        fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                        lineNumber: 628,
+                                        lineNumber: 643,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                lineNumber: 625,
+                                lineNumber: 641,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["CardContent"], {
+                                children: programCounts.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    className: "text-sm text-muted-foreground",
+                                    children: "No hay datos de programas."
+                                }, void 0, false, {
+                                    fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
+                                    lineNumber: 647,
+                                    columnNumber: 17
+                                }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "space-y-3",
+                                    children: programCounts.map((p)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "flex items-center gap-3",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "w-40 text-sm text-foreground truncate",
+                                                    children: p.program
+                                                }, void 0, false, {
+                                                    fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
+                                                    lineNumber: 652,
+                                                    columnNumber: 23
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "flex-1 bg-background/60 h-3 rounded-full overflow-hidden",
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "h-3 bg-primary",
+                                                        style: {
+                                                            width: `${p.count / programMax * 100}%`
+                                                        }
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
+                                                        lineNumber: 654,
+                                                        columnNumber: 25
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
+                                                    lineNumber: 653,
+                                                    columnNumber: 23
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "w-12 text-right text-sm text-foreground",
+                                                    children: p.count
+                                                }, void 0, false, {
+                                                    fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
+                                                    lineNumber: 656,
+                                                    columnNumber: 23
+                                                }, this)
+                                            ]
+                                        }, p.program, true, {
+                                            fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
+                                            lineNumber: 651,
+                                            columnNumber: 21
+                                        }, this))
+                                }, void 0, false, {
+                                    fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
+                                    lineNumber: 649,
+                                    columnNumber: 17
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
+                                lineNumber: 645,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
+                        lineNumber: 640,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Card"], {
+                        className: "border-border/70 bg-card/90 shadow-sm",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["CardHeader"], {
+                                className: "space-y-4",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["CardTitle"], {
+                                                    children: "Actividad reciente de la plataforma"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
+                                                    lineNumber: 667,
+                                                    columnNumber: 19
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                    className: "text-sm text-muted-foreground",
+                                                    children: "Filtra por tipo de evento y carga más resultados para revisar el historial."
+                                                }, void 0, false, {
+                                                    fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
+                                                    lineNumber: 668,
+                                                    columnNumber: 19
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
+                                            lineNumber: 666,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$app$2f$admin$2f$filters$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["ActivityRecentControls"], {
+                                            activityType: activityType
+                                        }, void 0, false, {
+                                            fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
+                                            lineNumber: 670,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
+                                    lineNumber: 665,
+                                    columnNumber: 15
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
+                                lineNumber: 664,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -1772,7 +1906,7 @@ async function AdminPage({ searchParams }) {
                                         children: "No hay actividad para este filtro."
                                     }, void 0, false, {
                                         fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                        lineNumber: 634,
+                                        lineNumber: 675,
                                         columnNumber: 17
                                     }, this),
                                     recentActivity.map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1783,7 +1917,7 @@ async function AdminPage({ searchParams }) {
                                                     children: item.title
                                                 }, void 0, false, {
                                                     fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                                    lineNumber: 638,
+                                                    lineNumber: 679,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1791,7 +1925,7 @@ async function AdminPage({ searchParams }) {
                                                     children: item.description
                                                 }, void 0, false, {
                                                     fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                                    lineNumber: 639,
+                                                    lineNumber: 680,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1802,13 +1936,13 @@ async function AdminPage({ searchParams }) {
                                                     }).format(item.when)
                                                 }, void 0, false, {
                                                     fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                                    lineNumber: 640,
+                                                    lineNumber: 681,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, item.id, true, {
                                             fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                            lineNumber: 637,
+                                            lineNumber: 678,
                                             columnNumber: 17
                                         }, this)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1819,24 +1953,24 @@ async function AdminPage({ searchParams }) {
                                             canLoadMore: canLoadMoreActivity
                                         }, void 0, false, {
                                             fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                            lineNumber: 647,
+                                            lineNumber: 688,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                        lineNumber: 646,
+                                        lineNumber: 687,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                lineNumber: 632,
+                                lineNumber: 673,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                        lineNumber: 624,
+                        lineNumber: 663,
                         columnNumber: 11
                     }, this)
                 ]
@@ -1851,7 +1985,7 @@ async function AdminPage({ searchParams }) {
                                     children: "Moderación de emprendimientos"
                                 }, void 0, false, {
                                     fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                    lineNumber: 663,
+                                    lineNumber: 703,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$app$2f$admin$2f$filters$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["VentureFilters"], {
@@ -1859,18 +1993,18 @@ async function AdminPage({ searchParams }) {
                                     stage: stageFilter
                                 }, void 0, false, {
                                     fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                    lineNumber: 664,
+                                    lineNumber: 704,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                            lineNumber: 662,
+                            lineNumber: 702,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                        lineNumber: 661,
+                        lineNumber: 701,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -1881,7 +2015,7 @@ async function AdminPage({ searchParams }) {
                                 children: "No hay emprendimientos."
                             }, void 0, false, {
                                 fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                lineNumber: 669,
+                                lineNumber: 709,
                                 columnNumber: 15
                             }, this),
                             ventures.map((venture)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1898,7 +2032,7 @@ async function AdminPage({ searchParams }) {
                                                             children: venture.title
                                                         }, void 0, false, {
                                                             fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                                            lineNumber: 678,
+                                                            lineNumber: 718,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Badge"], {
@@ -1906,7 +2040,7 @@ async function AdminPage({ searchParams }) {
                                                             children: stageLabel[venture.stage] || venture.stage
                                                         }, void 0, false, {
                                                             fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                                            lineNumber: 679,
+                                                            lineNumber: 719,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Badge"], {
@@ -1914,7 +2048,7 @@ async function AdminPage({ searchParams }) {
                                                             children: venture.published ? "Publicado" : "Oculto"
                                                         }, void 0, false, {
                                                             fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                                            lineNumber: 680,
+                                                            lineNumber: 720,
                                                             columnNumber: 21
                                                         }, this),
                                                         venture.featured && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Badge"], {
@@ -1922,13 +2056,13 @@ async function AdminPage({ searchParams }) {
                                                             children: "Destacado"
                                                         }, void 0, false, {
                                                             fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                                            lineNumber: 683,
+                                                            lineNumber: 723,
                                                             columnNumber: 42
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                                    lineNumber: 677,
+                                                    lineNumber: 717,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1940,13 +2074,13 @@ async function AdminPage({ searchParams }) {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                                    lineNumber: 685,
+                                                    lineNumber: 725,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                            lineNumber: 676,
+                                            lineNumber: 716,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1961,7 +2095,7 @@ async function AdminPage({ searchParams }) {
                                                             value: venture.id
                                                         }, void 0, false, {
                                                             fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                                            lineNumber: 691,
+                                                            lineNumber: 731,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Button"], {
@@ -1971,13 +2105,13 @@ async function AdminPage({ searchParams }) {
                                                             children: venture.published ? "Ocultar" : "Publicar"
                                                         }, void 0, false, {
                                                             fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                                            lineNumber: 692,
+                                                            lineNumber: 732,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                                    lineNumber: 690,
+                                                    lineNumber: 730,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -1989,7 +2123,7 @@ async function AdminPage({ searchParams }) {
                                                             value: venture.id
                                                         }, void 0, false, {
                                                             fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                                            lineNumber: 697,
+                                                            lineNumber: 737,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Button"], {
@@ -1999,37 +2133,37 @@ async function AdminPage({ searchParams }) {
                                                             children: venture.featured ? "Quitar destacado" : "Destacar"
                                                         }, void 0, false, {
                                                             fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                                            lineNumber: 698,
+                                                            lineNumber: 738,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                                    lineNumber: 696,
+                                                    lineNumber: 736,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                            lineNumber: 689,
+                                            lineNumber: 729,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, venture.id, true, {
                                     fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                    lineNumber: 672,
+                                    lineNumber: 712,
                                     columnNumber: 15
                                 }, this))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                        lineNumber: 667,
+                        lineNumber: 707,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                lineNumber: 660,
+                lineNumber: 700,
                 columnNumber: 9
             }, this),
             activeTab === "users" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Card"], {
@@ -2042,25 +2176,25 @@ async function AdminPage({ searchParams }) {
                                     children: "Usuarios"
                                 }, void 0, false, {
                                     fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                    lineNumber: 713,
+                                    lineNumber: 753,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$app$2f$admin$2f$filters$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["UserFilters"], {
                                     user: userQuery
                                 }, void 0, false, {
                                     fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                    lineNumber: 714,
+                                    lineNumber: 754,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                            lineNumber: 712,
+                            lineNumber: 752,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                        lineNumber: 711,
+                        lineNumber: 751,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -2071,7 +2205,7 @@ async function AdminPage({ searchParams }) {
                                 children: "No hay usuarios."
                             }, void 0, false, {
                                 fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                lineNumber: 718,
+                                lineNumber: 758,
                                 columnNumber: 36
                             }, this),
                             users.map((user)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2087,7 +2221,7 @@ async function AdminPage({ searchParams }) {
                                                         children: user.name || "Sin nombre"
                                                     }, void 0, false, {
                                                         fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                                        lineNumber: 726,
+                                                        lineNumber: 766,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Badge"], {
@@ -2095,7 +2229,7 @@ async function AdminPage({ searchParams }) {
                                                         children: user.email
                                                     }, void 0, false, {
                                                         fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                                        lineNumber: 727,
+                                                        lineNumber: 767,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Badge"], {
@@ -2103,13 +2237,13 @@ async function AdminPage({ searchParams }) {
                                                         children: user.role
                                                     }, void 0, false, {
                                                         fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                                        lineNumber: 728,
+                                                        lineNumber: 768,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                                lineNumber: 725,
+                                                lineNumber: 765,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2120,30 +2254,30 @@ async function AdminPage({ searchParams }) {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                                lineNumber: 730,
+                                                lineNumber: 770,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                        lineNumber: 724,
+                                        lineNumber: 764,
                                         columnNumber: 17
                                     }, this)
                                 }, user.id, false, {
                                     fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                    lineNumber: 720,
+                                    lineNumber: 760,
                                     columnNumber: 15
                                 }, this))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                        lineNumber: 717,
+                        lineNumber: 757,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                lineNumber: 710,
+                lineNumber: 750,
                 columnNumber: 9
             }, this),
             activeTab === "modules" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Card"], {
@@ -2156,7 +2290,7 @@ async function AdminPage({ searchParams }) {
                                     children: "Módulos de formación"
                                 }, void 0, false, {
                                     fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                    lineNumber: 742,
+                                    lineNumber: 782,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$app$2f$admin$2f$filters$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["ModuleFilters"], {
@@ -2165,18 +2299,18 @@ async function AdminPage({ searchParams }) {
                                     categories: categoryOptions
                                 }, void 0, false, {
                                     fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                    lineNumber: 743,
+                                    lineNumber: 783,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                            lineNumber: 741,
+                            lineNumber: 781,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                        lineNumber: 740,
+                        lineNumber: 780,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -2187,7 +2321,7 @@ async function AdminPage({ searchParams }) {
                                 children: "No hay módulos cargados."
                             }, void 0, false, {
                                 fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                lineNumber: 747,
+                                lineNumber: 787,
                                 columnNumber: 38
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2207,7 +2341,7 @@ async function AdminPage({ searchParams }) {
                                                                 children: mod.title
                                                             }, void 0, false, {
                                                                 fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                                                lineNumber: 755,
+                                                                lineNumber: 795,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2215,13 +2349,13 @@ async function AdminPage({ searchParams }) {
                                                                 children: mod.category
                                                             }, void 0, false, {
                                                                 fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                                                lineNumber: 756,
+                                                                lineNumber: 796,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                                        lineNumber: 754,
+                                                        lineNumber: 794,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Badge"], {
@@ -2229,13 +2363,13 @@ async function AdminPage({ searchParams }) {
                                                         children: ext
                                                     }, void 0, false, {
                                                         fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                                        lineNumber: 758,
+                                                        lineNumber: 798,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                                lineNumber: 753,
+                                                lineNumber: 793,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$v1_emprende_upc$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2243,37 +2377,37 @@ async function AdminPage({ searchParams }) {
                                                 children: mod.path
                                             }, void 0, false, {
                                                 fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                                lineNumber: 760,
+                                                lineNumber: 800,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, `${mod.category}-${mod.path}`, true, {
                                         fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                        lineNumber: 752,
+                                        lineNumber: 792,
                                         columnNumber: 19
                                     }, this);
                                 })
                             }, void 0, false, {
                                 fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                                lineNumber: 748,
+                                lineNumber: 788,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                        lineNumber: 746,
+                        lineNumber: 786,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-                lineNumber: 739,
+                lineNumber: 779,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/v1_emprende_upc/app/admin/page.tsx",
-        lineNumber: 429,
+        lineNumber: 446,
         columnNumber: 5
     }, this);
 }
