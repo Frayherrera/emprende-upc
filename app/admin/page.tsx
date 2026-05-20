@@ -13,13 +13,14 @@ import { ActivityLoadMoreButton, ActivityRecentControls, ModuleFilters, UserFilt
 import { MiniLineChart } from "@/components/admin/mini-line-chart";
 export const dynamic = "force-dynamic";
 import { StatCard } from "@/components/admin/stat-card";
+import { VentureStatCard } from "@/components/admin/venture-stat-card";
 
 
-const IconVenture = <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4"><path d="M20 7h-4V5c0-1.1-.9-2-2-2h-4C8.9 3 8 3.9 8 5v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zm-8-2h4v2h-4V5z"/></svg>;
-const IconUsers = <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>;
-const IconChat = <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>;
-const IconTraining = <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>;
-const IconAttachment = <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4"><path d="M16.5 6v11.5c0 2.21-1.79 4-4 4s-4-1.79-4-4V5c0-1.38 1.12-2.5 2.5-2.5s2.5 1.12 2.5 2.5v10.5c0 .55-.45 1-1 1s-1-.45-1-1V6H10v9.5c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5V5c0-2.21-1.79-4-4-4S7 2.79 7 5v12.5c0 3.04 2.46 5.5 5.5 5.5s5.5-2.46 5.5-5.5V6h-1.5z"/></svg>;
+const IconVenture = <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4"><path d="M20 7h-4V5c0-1.1-.9-2-2-2h-4C8.9 3 8 3.9 8 5v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zm-8-2h4v2h-4V5z" /></svg>;
+const IconUsers = <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" /></svg>;
+const IconChat = <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z" /></svg>;
+const IconTraining = <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z" /></svg>;
+const IconAttachment = <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4"><path d="M16.5 6v11.5c0 2.21-1.79 4-4 4s-4-1.79-4-4V5c0-1.38 1.12-2.5 2.5-2.5s2.5 1.12 2.5 2.5v10.5c0 .55-.45 1-1 1s-1-.45-1-1V6H10v9.5c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5V5c0-2.21-1.79-4-4-4S7 2.79 7 5v12.5c0 3.04 2.46 5.5 5.5 5.5s5.5-2.46 5.5-5.5V6h-1.5z" /></svg>;
 
 async function ensureAdmin() {
   const session = await getServerSession(authOptions);
@@ -150,8 +151,8 @@ export default async function AdminPage({
   searchParams,
 }: {
   searchParams:
-    | Promise<{ tab?: string; statsRange?: string; activityType?: string; activityLimit?: string; venture?: string; stage?: string; user?: string; module?: string; moduleCategory?: string }>
-    | { tab?: string; statsRange?: string; activityType?: string; activityLimit?: string; venture?: string; stage?: string; user?: string; module?: string; moduleCategory?: string };
+  | Promise<{ tab?: string; statsRange?: string; activityType?: string; activityLimit?: string; venture?: string; stage?: string; user?: string; module?: string; moduleCategory?: string }>
+  | { tab?: string; statsRange?: string; activityType?: string; activityLimit?: string; venture?: string; stage?: string; user?: string; module?: string; moduleCategory?: string };
 }) {
   await ensureAdmin();
 
@@ -193,12 +194,12 @@ export default async function AdminPage({
         ...(stageFilter ? { stage: stageFilter as any } : {}),
         ...(ventureQuery
           ? {
-              OR: [
-                { title: { contains: ventureQuery, mode: "insensitive" } },
-                { summary: { contains: ventureQuery, mode: "insensitive" } },
-                { owner: { email: { contains: ventureQuery, mode: "insensitive" } } },
-              ],
-            }
+            OR: [
+              { title: { contains: ventureQuery, mode: "insensitive" } },
+              { summary: { contains: ventureQuery, mode: "insensitive" } },
+              { owner: { email: { contains: ventureQuery, mode: "insensitive" } } },
+            ],
+          }
           : {}),
       },
       orderBy: { createdAt: "desc" },
@@ -218,9 +219,9 @@ export default async function AdminPage({
       where: {
         OR: userQuery
           ? [
-              { email: { contains: userQuery, mode: "insensitive" } },
-              { name: { contains: userQuery, mode: "insensitive" } },
-            ]
+            { email: { contains: userQuery, mode: "insensitive" } },
+            { name: { contains: userQuery, mode: "insensitive" } },
+          ]
           : undefined,
       },
       orderBy: { createdAt: "desc" },
@@ -232,6 +233,14 @@ export default async function AdminPage({
       prisma.venture.count(),
       prisma.venture.count({ where: { published: false } }),
       prisma.user.count(),
+      // Agrega esto al Promise.all
+      prisma.venture.findMany({
+        where: { published: true },
+        select: {
+          category: true,
+          owner: { select: { profile: { select: { program: true } } } },
+        },
+      }),
     ]),
     prisma.venture.count({ where: { published: true } }),
     prisma.venture.count({ where: { featured: true } }),
@@ -268,7 +277,7 @@ export default async function AdminPage({
     ]),
   ]);
 
-  const [ventureCount, pendingCount, userCount] = counts;
+  const [ventureCount, pendingCount, userCount, venturesForStats] = counts;
   const moduleRows = trainingCatalog.flatMap((category) =>
     category.resources.map((resource) => ({
       title: resource.label,
@@ -276,7 +285,24 @@ export default async function AdminPage({
       path: resource.path,
     })),
   );
+    
+// Procesa los datos
+const byProgramMap = new Map<string, number>();
+for (const v of venturesForStats) {
+  const program = v.owner?.profile?.program;
+  if (program) byProgramMap.set(program, (byProgramMap.get(program) || 0) + 1);
+}
+const byProgram = [...byProgramMap.entries()]
+  .map(([program, count]) => ({ program, count }))
+  .sort((a, b) => b.count - a.count);
 
+const byCategoryMap = new Map<string, number>();
+for (const v of venturesForStats) {
+  if (v.category) byCategoryMap.set(v.category, (byCategoryMap.get(v.category) || 0) + 1);
+}
+const byCategory = [...byCategoryMap.entries()]
+  .map(([category, count]) => ({ category, count }))
+  .sort((a, b) => b.count - a.count);
   const categoryOptions = trainingCatalog.map((category) => category.category);
   const normalizedModuleQuery = moduleQuery.toLowerCase();
   const normalizedModuleCategory = moduleCategory.toLowerCase();
@@ -483,24 +509,30 @@ export default async function AdminPage({
               ))}
             </div>
           </div>
-<div className="grid gap-4 md:grid-cols-3">
-  <StatCard title="Emprendimientos " value={ventureCount} description="Total histórico de proyectos creados." color="#10b981" unit="Proyectos" data={venturesSeries} icon={IconVenture} rangeDays={trendDays} />
-  <StatCard title="Pendientes" value={pendingCount} description="Proyectos sin publicar en este momento." color="#f59e0b" unit="Proyectos" data={venturesSeries} icon={IconVenture} rangeDays={trendDays} />
-  <StatCard title="Usuarios" value={userCount} description="Usuarios acumulados en la plataforma." color="#0ea5e9" unit="Usuarios" data={usersSeries} icon={IconUsers} rangeDays={trendDays} />
-</div>
+          <div className="grid gap-4 md:grid-cols-3">
+            <VentureStatCard
+              ventureCount={ventureCount}
+              venturesSeries={venturesSeries}
+              byProgram={byProgram}
+              byCategory={byCategory}
+            />
+            {/* <StatCard title="Emprendimientos " value={ventureCount} description="Total histórico de proyectos creados." color="#10b981" unit="Proyectos" data={venturesSeries} icon={IconVenture} rangeDays={trendDays} /> */}
+            <StatCard title="Pendientes" value={pendingCount} description="Proyectos sin publicar en este momento." color="#f59e0b" unit="Proyectos" data={venturesSeries} icon={IconVenture} rangeDays={trendDays} />
+            <StatCard title="Usuarios" value={userCount} description="Usuarios acumulados en la plataforma." color="#0ea5e9" unit="Usuarios" data={usersSeries} icon={IconUsers} rangeDays={trendDays} />
+          </div>
 
-<div className="grid gap-4 md:grid-cols-3">
-  <StatCard title={`Actividad (${statsRangeLabel})`} value={activityUsersRange} description="Usuarios activos por chat, formación o creación de proyectos." color="#10b981" unit="Usuarios" data={messagesSeries} delta={activityUsersDelta} icon={IconChat} rangeDays={statsRangeDays} />
-  <StatCard title={`Uso de formación (${statsRangeLabel})`} value={progressOpensRange} description="Aperturas de recursos de formación registradas." color="#d946ef" unit="Aperturas" data={trainingSeries} delta={trainingOpensDelta} icon={IconTraining} rangeDays={statsRangeDays} />
-  <StatCard title={`Nuevos registros (${statsRangeLabel})`} value={usersRange} description={`Usuarios nuevos en los últimos ${statsRangeLabel}.`} color="#0ea5e9" unit="Usuarios" data={usersSeries} delta={usersRangeDelta} icon={IconUsers} rangeDays={statsRangeDays} />
-</div>
+          <div className="grid gap-4 md:grid-cols-3">
+            <StatCard title={`Actividad (${statsRangeLabel})`} value={activityUsersRange} description="Usuarios activos por chat, formación o creación de proyectos." color="#10b981" unit="Usuarios" data={messagesSeries} delta={activityUsersDelta} icon={IconChat} rangeDays={statsRangeDays} />
+            <StatCard title={`Uso de formación (${statsRangeLabel})`} value={progressOpensRange} description="Aperturas de recursos de formación registradas." color="#d946ef" unit="Aperturas" data={trainingSeries} delta={trainingOpensDelta} icon={IconTraining} rangeDays={statsRangeDays} />
+            <StatCard title={`Nuevos registros (${statsRangeLabel})`} value={usersRange} description={`Usuarios nuevos en los últimos ${statsRangeLabel}.`} color="#0ea5e9" unit="Usuarios" data={usersSeries} delta={usersRangeDelta} icon={IconUsers} rangeDays={statsRangeDays} />
+          </div>
 
-<div className="grid gap-4 md:grid-cols-3">
-  <StatCard title={`Nuevos emprendimientos (${statsRangeLabel})`} value={venturesRange} description="Proyectos creados durante el período seleccionado." color="#6366f1" unit="Proyectos" data={venturesSeries} delta={venturesRangeDelta} icon={IconVenture} rangeDays={statsRangeDays} />
-  <StatCard title="Mensajes de chat (histórico)" value={totalMessages} description="Mensajes usuario/asistente acumulados en la plataforma." color="#f59e0b" unit="Mensajes" data={messagesSeries} icon={IconChat} rangeDays={trendDays} />
-  <StatCard title="Recursos formativos" value={moduleRows.length} description="Recursos disponibles en el catálogo actual." color="#6366f1" unit="Recursos" data={attachmentsSeries} icon={IconAttachment} rangeDays={trendDays} />
-</div>
-{/* <div className="grid gap-4 md:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-3">
+            <StatCard title={`Nuevos emprendimientos (${statsRangeLabel})`} value={venturesRange} description="Proyectos creados durante el período seleccionado." color="#6366f1" unit="Proyectos" data={venturesSeries} delta={venturesRangeDelta} icon={IconVenture} rangeDays={statsRangeDays} />
+            <StatCard title="Mensajes de chat (histórico)" value={totalMessages} description="Mensajes usuario/asistente acumulados en la plataforma." color="#f59e0b" unit="Mensajes" data={messagesSeries} icon={IconChat} rangeDays={trendDays} />
+            <StatCard title="Recursos formativos" value={moduleRows.length} description="Recursos disponibles en el catálogo actual." color="#6366f1" unit="Recursos" data={attachmentsSeries} icon={IconAttachment} rangeDays={trendDays} />
+          </div>
+          {/* <div className="grid gap-4 md:grid-cols-3">
   <Card>
     <CardHeader className="pb-2">
       <CardTitle className="text-sm text-muted-foreground">Emprendimientos</CardTitle>
