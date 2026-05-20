@@ -30,7 +30,6 @@ export function CoverPicker({ defaultUrl }: CoverPickerProps) {
         name="cover"
         type="file"
         accept="image/png,image/jpeg,image/webp"
-        required
         onChange={(event) => {
           const file = event.target.files?.[0];
           setObjectUrl((current) => {

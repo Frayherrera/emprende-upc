@@ -81,7 +81,10 @@ export async function createVenture(userId: string, formData: FormData) {
     objetivos: formData.get("objetivos"),
   };
 
-  const parsed = ventureSchema.safeParse(raw);
+  const sanitized = Object.fromEntries(
+    Object.entries(raw).map(([k, v]) => [k, v || undefined])
+  );
+  const parsed = ventureSchema.safeParse(sanitized);
   if (!parsed.success) redirect("/panel?error=Revisa%20los%20datos%20del%20formulario.");
 
   const tags = parseTags(parsed.data.tags?.toString());
