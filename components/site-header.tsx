@@ -21,6 +21,7 @@ const links = [
   { href: "/", label: "Inicio" },
   { href: "/emprendimientos", label: "Emprendimientos" },
   { href: "/formacion", label: "Formación" },
+  { href: "/eventos", label: "Eventos" },
 ];
 
 const desktopLinks = links.filter((link) => link.href !== "/");

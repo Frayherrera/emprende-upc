@@ -21,6 +21,8 @@ const IconUsers = <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-
 const IconChat = <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z" /></svg>;
 const IconTraining = <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z" /></svg>;
 const IconAttachment = <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4"><path d="M16.5 6v11.5c0 2.21-1.79 4-4 4s-4-1.79-4-4V5c0-1.38 1.12-2.5 2.5-2.5s2.5 1.12 2.5 2.5v10.5c0 .55-.45 1-1 1s-1-.45-1-1V6H10v9.5c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5V5c0-2.21-1.79-4-4-4S7 2.79 7 5v12.5c0 3.04 2.46 5.5 5.5 5.5s5.5-2.46 5.5-5.5V6h-1.5z" /></svg>;
+const IconEvent = <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM9 10H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/></svg>;
+const IconAttendance = <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>;
 
 async function ensureAdmin() {
   const session = await getServerSession(authOptions);
@@ -188,7 +190,7 @@ export default async function AdminPage({
   const sinceTrend = new Date(now);
   sinceTrend.setDate(now.getDate() - trendDays);
 
-  const [ventures, users, trainingCatalog, counts, totalPublishedVentures, totalFeaturedVentures, totalAttachments, totalMessages, progressOpensRange, progressOpensPreviousRange, usersRange, usersPreviousRange, venturesRange, venturesPreviousRange, usersTrend, venturesTrend, messagesTrend, trainingTrend, attachmentsTrend, messageActiveUsersRange, messageActiveUsersPreviousRange, trainingActiveUsersRange, trainingActiveUsersPreviousRange, ventureActiveUsersRange, ventureActiveUsersPreviousRange, latestUsers, latestVentures, latestAttachments, latestMessages, latestTrainingOpens, activityCounts] = await Promise.all([
+  const [ventures, users, trainingCatalog, counts, totalPublishedVentures, totalFeaturedVentures, totalAttachments, totalMessages, progressOpensRange, progressOpensPreviousRange, usersRange, usersPreviousRange, venturesRange, venturesPreviousRange, usersTrend, venturesTrend, messagesTrend, trainingTrend, attachmentsTrend, messageActiveUsersRange, messageActiveUsersPreviousRange, trainingActiveUsersRange, trainingActiveUsersPreviousRange, ventureActiveUsersRange, ventureActiveUsersPreviousRange, latestUsers, latestVentures, latestAttachments, latestMessages, latestTrainingOpens, activityCounts, eventCount, attendanceCount, eventsTrend, attendancesTrend] = await Promise.all([
     prisma.venture.findMany({
       where: {
         ...(stageFilter ? { stage: stageFilter as any } : {}),
@@ -275,6 +277,10 @@ export default async function AdminPage({
       prisma.message.count({ where: { role: { in: ["USER", "ASSISTANT"] } } }),
       prisma.trainingProgress.count(),
     ]),
+    prisma.event.count(),
+    prisma.attendance.count(),
+    prisma.event.findMany({ where: { createdAt: { gte: sinceTrend } }, select: { createdAt: true } }),
+    prisma.attendance.findMany({ where: { createdAt: { gte: sinceTrend } }, select: { createdAt: true } }),
   ]);
 
   const [ventureCount, pendingCount, userCount, venturesForStats] = counts;
@@ -342,6 +348,8 @@ const byCategory = [...byCategoryMap.entries()]
   const messagesSeries = buildDailySeries(trendDays, now, messagesTrend.map((x) => x.createdAt));
   const trainingSeries = buildDailySeries(trendDays, now, trainingTrend.map((x) => x.openedAt));
   const attachmentsSeries = buildDailySeries(trendDays, now, attachmentsTrend.map((x) => x.createdAt));
+  const eventsSeries = buildDailySeries(trendDays, now, eventsTrend.map((x) => x.createdAt));
+  const attendancesSeries = buildDailySeries(trendDays, now, attendancesTrend.map((x) => x.createdAt));
 
   // Conteo de emprendimientos por programa (agrupar por profile.program)
   const ventureProgramRows = await prisma.venture.findMany({
@@ -359,6 +367,27 @@ const byCategory = [...byCategoryMap.entries()]
     .sort((a, b) => b.count - a.count);
 
   const programMax = programCounts.length ? Math.max(...programCounts.map((p) => p.count)) : 1;
+
+  // Nivel de madurez vs Razón Social
+  const ventureStageRows = await prisma.venture.findMany({
+    select: { stage: true, razonSocial: true, title: true },
+  });
+
+  const stageCountsMap = new Map<string, { count: number; razones: string[] }>();
+  for (const row of ventureStageRows) {
+    const stage = row.stage;
+    const existing = stageCountsMap.get(stage) || { count: 0, razones: [] };
+    existing.count += 1;
+    if (row.razonSocial) existing.razones.push(row.razonSocial);
+    stageCountsMap.set(stage, existing);
+  }
+
+  const stageOrder = ["IDEA", "PROTOTYPE", "MVP", "GROWTH"];
+  const stageCounts = stageOrder
+    .filter((s) => stageCountsMap.has(s))
+    .map((s) => ({ stage: s, ...stageCountsMap.get(s)! }));
+
+  const stageMax = stageCounts.length ? Math.max(...stageCounts.map((p) => p.count)) : 1;
 
   const trendSeries = [
     { key: "users", title: "Usuarios nuevos", color: "#0ea5e9", data: usersSeries },
@@ -382,6 +411,8 @@ const byCategory = [...byCategoryMap.entries()]
     ...messagesSeries.map((d) => d.value),
     ...trainingSeries.map((d) => d.value),
     ...attachmentsSeries.map((d) => d.value),
+    ...eventsSeries.map((d) => d.value),
+    ...attendancesSeries.map((d) => d.value),
   );
 
   const allRecentActivity = [
@@ -488,6 +519,9 @@ const byCategory = [...byCategoryMap.entries()]
         <Link href={tabHref("modules")} className={`rounded-md border px-3 py-2 text-sm ${activeTab === "modules" ? "border-primary bg-primary/10 text-primary" : "border-border/70 text-foreground hover:bg-muted/50"}`}>
           Módulos de formación
         </Link>
+        <Link href="/admin/eventos" className="rounded-md border border-border/70 px-3 py-2 text-sm text-foreground hover:bg-muted/50">
+          Administrar eventos
+        </Link>
       </div>
 
       {activeTab === "stats" && (
@@ -531,6 +565,11 @@ const byCategory = [...byCategoryMap.entries()]
             <StatCard title={`Nuevos emprendimientos (${statsRangeLabel})`} value={venturesRange} description="Proyectos creados durante el período seleccionado." color="#6366f1" unit="Proyectos" data={venturesSeries} delta={venturesRangeDelta} icon={IconVenture} rangeDays={statsRangeDays} />
             <StatCard title="Mensajes de chat (histórico)" value={totalMessages} description="Mensajes usuario/asistente acumulados en la plataforma." color="#f59e0b" unit="Mensajes" data={messagesSeries} icon={IconChat} rangeDays={trendDays} />
             <StatCard title="Recursos formativos" value={moduleRows.length} description="Recursos disponibles en el catálogo actual." color="#6366f1" unit="Recursos" data={attachmentsSeries} icon={IconAttachment} rangeDays={trendDays} />
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2">
+            <StatCard title="Eventos creados" value={eventCount} description="Total de eventos registrados en la plataforma." color="#8b5cf6" unit="Eventos" data={eventsSeries} icon={IconEvent} rangeDays={trendDays} />
+            <StatCard title="Asistencias registradas" value={attendanceCount} description="Confirmaciones de asistencia a eventos." color="#06b6d4" unit="Asistencias" data={attendancesSeries} icon={IconAttendance} rangeDays={trendDays} />
           </div>
           {/* <div className="grid gap-4 md:grid-cols-3">
   <Card>
@@ -686,6 +725,46 @@ const byCategory = [...byCategoryMap.entries()]
                         <div className="h-3 bg-primary" style={{ width: `${(p.count / programMax) * 100}%` }} />
                       </div>
                       <div className="w-12 text-right text-sm text-foreground">{p.count}</div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle>Nivel de madurez vs Razón Social</CardTitle>
+              <p className="text-sm text-muted-foreground">Distribución de emprendimientos por etapa de madurez y su razón social.</p>
+            </CardHeader>
+            <CardContent>
+              {stageCounts.length === 0 ? (
+                <p className="text-sm text-muted-foreground">No hay datos de emprendimientos.</p>
+              ) : (
+                <div className="space-y-5">
+                  {stageCounts.map((s) => (
+                    <div key={s.stage}>
+                      <div className="flex items-center gap-3">
+                        <div className="w-28 text-sm font-medium text-foreground">{stageLabel[s.stage] || s.stage}</div>
+                        <div className="flex-1 bg-background/60 h-4 rounded-full overflow-hidden">
+                          <div
+                            className="h-4 rounded-full"
+                            style={{
+                              width: `${(s.count / stageMax) * 100}%`,
+                              backgroundColor: s.stage === "IDEA" ? "#f59e0b" : s.stage === "PROTOTYPE" ? "#10b981" : s.stage === "MVP" ? "#6366f1" : "#8b5cf6",
+                            }}
+                          />
+                        </div>
+                        <div className="w-10 text-right text-sm font-medium text-foreground">{s.count}</div>
+                      </div>
+                      {s.razones.length > 0 && (
+                        <div className="mt-1.5 ml-28 flex flex-wrap gap-1.5">
+                          {s.razones.map((r, i) => (
+                            <span key={i} className="inline-block rounded-full border border-border/60 px-2.5 py-0.5 text-[11px] text-muted-foreground">
+                              {r}
+                            </span>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   ))}
                 </div>

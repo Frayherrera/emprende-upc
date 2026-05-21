@@ -158,6 +158,34 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
+model Event {
+  id          String       @id @default(cuid())
+  title       String
+  description String?      @db.Text
+  mainImage   String?
+  dateTime    DateTime
+  location    String
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  attendances Attendance[]
+}
+
+model AcademicProgram {
+  id         String       @id @default(cuid())
+  name       String       @unique
+  attendances Attendance[]
+}
+
+model Attendance {
+  id                String          @id @default(cuid())
+  eventId           String
+  studentName       String
+  academicProgramId String
+  createdAt         DateTime        @default(now())
+  event             Event           @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  academicProgram   AcademicProgram @relation(fields: [academicProgramId], references: [id])
+}
+
 enum Role {
   STUDENT
   ADMIN
