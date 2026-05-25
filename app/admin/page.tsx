@@ -14,6 +14,7 @@ import { MiniLineChart } from "@/components/admin/mini-line-chart";
 export const dynamic = "force-dynamic";
 import { StatCard } from "@/components/admin/stat-card";
 import { VentureStatCard } from "@/components/admin/venture-stat-card";
+import { StageCategoryCard } from "@/components/admin/stage-category-card";
 
 
 const IconVenture = <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4"><path d="M20 7h-4V5c0-1.1-.9-2-2-2h-4C8.9 3 8 3.9 8 5v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zm-8-2h4v2h-4V5z" /></svg>;
@@ -368,17 +369,17 @@ const byCategory = [...byCategoryMap.entries()]
 
   const programMax = programCounts.length ? Math.max(...programCounts.map((p) => p.count)) : 1;
 
-  // Nivel de madurez vs Razón Social
+  // Nivel de madurez vs Categoría
   const ventureStageRows = await prisma.venture.findMany({
-    select: { stage: true, razonSocial: true, title: true },
+    select: { stage: true, category: true, title: true },
   });
 
-  const stageCountsMap = new Map<string, { count: number; razones: string[] }>();
+  const stageCountsMap = new Map<string, { count: number; categories: string[] }>();
   for (const row of ventureStageRows) {
     const stage = row.stage;
-    const existing = stageCountsMap.get(stage) || { count: 0, razones: [] };
+    const existing = stageCountsMap.get(stage) || { count: 0, categories: [] };
     existing.count += 1;
-    if (row.razonSocial) existing.razones.push(row.razonSocial);
+    if (row.category) existing.categories.push(row.category);
     stageCountsMap.set(stage, existing);
   }
 
@@ -386,8 +387,6 @@ const byCategory = [...byCategoryMap.entries()]
   const stageCounts = stageOrder
     .filter((s) => stageCountsMap.has(s))
     .map((s) => ({ stage: s, ...stageCountsMap.get(s)! }));
-
-  const stageMax = stageCounts.length ? Math.max(...stageCounts.map((p) => p.count)) : 1;
 
   const trendSeries = [
     { key: "users", title: "Usuarios nuevos", color: "#0ea5e9", data: usersSeries },
@@ -731,46 +730,12 @@ const byCategory = [...byCategoryMap.entries()]
               )}
             </CardContent>
           </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle>Nivel de madurez vs Razón Social</CardTitle>
-              <p className="text-sm text-muted-foreground">Distribución de emprendimientos por etapa de madurez y su razón social.</p>
-            </CardHeader>
-            <CardContent>
-              {stageCounts.length === 0 ? (
-                <p className="text-sm text-muted-foreground">No hay datos de emprendimientos.</p>
-              ) : (
-                <div className="space-y-5">
-                  {stageCounts.map((s) => (
-                    <div key={s.stage}>
-                      <div className="flex items-center gap-3">
-                        <div className="w-28 text-sm font-medium text-foreground">{stageLabel[s.stage] || s.stage}</div>
-                        <div className="flex-1 bg-background/60 h-4 rounded-full overflow-hidden">
-                          <div
-                            className="h-4 rounded-full"
-                            style={{
-                              width: `${(s.count / stageMax) * 100}%`,
-                              backgroundColor: s.stage === "IDEA" ? "#f59e0b" : s.stage === "PROTOTYPE" ? "#10b981" : s.stage === "MVP" ? "#6366f1" : "#8b5cf6",
-                            }}
-                          />
-                        </div>
-                        <div className="w-10 text-right text-sm font-medium text-foreground">{s.count}</div>
-                      </div>
-                      {s.razones.length > 0 && (
-                        <div className="mt-1.5 ml-28 flex flex-wrap gap-1.5">
-                          {s.razones.map((r, i) => (
-                            <span key={i} className="inline-block rounded-full border border-border/60 px-2.5 py-0.5 text-[11px] text-muted-foreground">
-                              {r}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              )}
-            </CardContent>
-          </Card>
+          <StageCategoryCard
+            total={ventureCount}
+            data={stageCounts}
+            series={venturesSeries}
+            stageLabel={stageLabel}
+          />
           <Card className="border-border/70 bg-card/90 shadow-sm">
             <CardHeader className="space-y-4">
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
