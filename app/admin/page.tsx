@@ -14,6 +14,7 @@ import { MiniLineChart } from "@/components/admin/mini-line-chart";
 export const dynamic = "force-dynamic";
 import { StatCard } from "@/components/admin/stat-card";
 import { VentureStatCard } from "@/components/admin/venture-stat-card";
+import { AttendanceStatCard } from "@/components/admin/attendance-stat-card";
 import { StageCategoryCard } from "@/components/admin/stage-category-card";
 
 
@@ -191,7 +192,7 @@ export default async function AdminPage({
   const sinceTrend = new Date(now);
   sinceTrend.setDate(now.getDate() - trendDays);
 
-  const [ventures, users, trainingCatalog, counts, totalPublishedVentures, totalFeaturedVentures, totalAttachments, totalMessages, progressOpensRange, progressOpensPreviousRange, usersRange, usersPreviousRange, venturesRange, venturesPreviousRange, usersTrend, venturesTrend, messagesTrend, trainingTrend, attachmentsTrend, messageActiveUsersRange, messageActiveUsersPreviousRange, trainingActiveUsersRange, trainingActiveUsersPreviousRange, ventureActiveUsersRange, ventureActiveUsersPreviousRange, latestUsers, latestVentures, latestAttachments, latestMessages, latestTrainingOpens, activityCounts, eventCount, attendanceCount, eventsTrend, attendancesTrend] = await Promise.all([
+  const [ventures, users, trainingCatalog, counts, totalPublishedVentures, totalFeaturedVentures, totalAttachments, totalMessages, progressOpensRange, progressOpensPreviousRange, usersRange, usersPreviousRange, venturesRange, venturesPreviousRange, usersTrend, venturesTrend, messagesTrend, trainingTrend, attachmentsTrend, messageActiveUsersRange, messageActiveUsersPreviousRange, trainingActiveUsersRange, trainingActiveUsersPreviousRange, ventureActiveUsersRange, ventureActiveUsersPreviousRange, latestUsers, latestVentures, latestAttachments, latestMessages, latestTrainingOpens, activityCounts, eventCount, attendanceCount, eventsTrend, attendancesTrend, attendanceGroupByProgram] = await Promise.all([
     prisma.venture.findMany({
       where: {
         ...(stageFilter ? { stage: stageFilter as any } : {}),
@@ -282,7 +283,22 @@ export default async function AdminPage({
     prisma.attendance.count(),
     prisma.event.findMany({ where: { createdAt: { gte: sinceTrend } }, select: { createdAt: true } }),
     prisma.attendance.findMany({ where: { createdAt: { gte: sinceTrend } }, select: { createdAt: true } }),
+    prisma.attendance.groupBy({
+      by: ['academicProgramId'],
+      _count: { id: true },
+      orderBy: { _count: { id: 'desc' } },
+    }),
   ]);
+  const programIds = attendanceGroupByProgram.map((a) => a.academicProgramId);
+  const programs = await prisma.academicProgram.findMany({
+    where: { id: { in: programIds } },
+    select: { id: true, name: true },
+  });
+  const programMap = new Map(programs.map((p) => [p.id, p.name]));
+  const attendanceByProgram = attendanceGroupByProgram.map((entry) => ({
+    program: programMap.get(entry.academicProgramId) || "Desconocido",
+    count: entry._count.id,
+  }));
 
   const [ventureCount, pendingCount, userCount, venturesForStats] = counts;
   const moduleRows = trainingCatalog.flatMap((category) =>
@@ -568,7 +584,7 @@ const byCategory = [...byCategoryMap.entries()]
 
           <div className="grid gap-4 md:grid-cols-2">
             <StatCard title="Eventos creados" value={eventCount} description="Total de eventos registrados en la plataforma." color="#8b5cf6" unit="Eventos" data={eventsSeries} icon={IconEvent} rangeDays={trendDays} />
-            <StatCard title="Asistencias registradas" value={attendanceCount} description="Confirmaciones de asistencia a eventos." color="#06b6d4" unit="Asistencias" data={attendancesSeries} icon={IconAttendance} rangeDays={trendDays} />
+            <AttendanceStatCard attendanceCount={attendanceCount} attendancesSeries={attendancesSeries} byProgram={attendanceByProgram} />
           </div>
           {/* <div className="grid gap-4 md:grid-cols-3">
   <Card>
