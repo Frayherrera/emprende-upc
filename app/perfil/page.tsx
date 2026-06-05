@@ -209,22 +209,13 @@ export default async function PerfilPage({
             <div className="grid gap-4 md:grid-cols-2">
               <div className="space-y-2">
                 <Label htmlFor="roleTitle">Rol principal</Label>
-                <select
+                <Input
                   id="roleTitle"
                   name="roleTitle"
+                  placeholder="Founder, PM, Growth, Dev..."
                   defaultValue={profile?.roleTitle || ""}
-                  className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm"
-                >
-                  <option value="">Selecciona un rol</option>
-                  <option value="Emprendedor">Emprendedor</option>
-                  <option value="Estudiante">Estudiante</option>
-                  <option value="Administrador">Administrador</option>
-                  <option value="Desarrollador">Desarrollador</option>
-                  <option value="Diseñador">Diseñador</option>
-                  <option value="Mentor">Mentor</option>
-                  <option value="Consultor">Consultor</option>
-                  <option value="Marketing y Ventas">Marketing y Ventas</option>
-                </select>
+                  maxLength={80}
+                />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="availability">Disponibilidad</Label>
@@ -234,13 +225,10 @@ export default async function PerfilPage({
                   defaultValue={profile?.availability || "NONE"}
                   className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm"
                 >
-                  <option value="NONE">Selecciona tu objetivo</option>
-                  <option value="IDEA_BUSINESS">Tengo una idea de negocio</option>
-                  <option value="INVESTORS">Busco inversionistas</option>
-                  <option value="STRATEGIC_ALLIES">Busco aliados estratégicos</option>
-                  <option value="OFFER_MENTORSHIP">Ofrezco mentoría</option>
-                  <option value="SEEK_MENTORSHIP">Busco mentoría</option>
-                  <option value="TEAM_TALENT">Busco talento para mi equipo</option>
+                  <option value="NONE">Solo networking</option>
+                  <option value="LOOKING_PARTNERS">Busco socios</option>
+                  <option value="MENTORING">Mentorías</option>
+                  <option value="FREELANCE">Disponible freelance</option>
                 </select>
               </div>
             </div>
