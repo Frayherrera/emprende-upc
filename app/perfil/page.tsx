@@ -209,13 +209,22 @@ export default async function PerfilPage({
             <div className="grid gap-4 md:grid-cols-2">
               <div className="space-y-2">
                 <Label htmlFor="roleTitle">Rol principal</Label>
-                <Input
+                <select
                   id="roleTitle"
                   name="roleTitle"
-                  placeholder="Founder, PM, Growth, Dev..."
                   defaultValue={profile?.roleTitle || ""}
-                  maxLength={80}
-                />
+                  className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm"
+                >
+                  <option value="">Selecciona un rol</option>
+                  <option value="Emprendedor">Emprendedor</option>
+                  <option value="Estudiante">Estudiante</option>
+                  <option value="Administrador">Administrador</option>
+                  <option value="Desarrollador">Desarrollador</option>
+                  <option value="Diseñador">Diseñador</option>
+                  <option value="Mentor">Mentor</option>
+                  <option value="Consultor">Consultor</option>
+                  <option value="Marketing y Ventas">Marketing y Ventas</option>
+                </select>
               </div>
               <div className="space-y-2">
                 <Label htmlFor="availability">Disponibilidad</Label>
