@@ -13,6 +13,7 @@ interface EventPdfExportButtonProps {
   time: string;
   location: string;
   description?: string | null;
+  imageUrl?: string | null;
 }
 
 export function EventPdfExportButton({
@@ -22,8 +23,39 @@ export function EventPdfExportButton({
   time,
   location,
   description,
+  imageUrl,
 }: EventPdfExportButtonProps) {
   const [generating, setGenerating] = useState(false);
+
+  const loadImageDataUrl = async (url: string) => {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Error cargando imagen: ${response.status}`);
+    }
+
+    const blob = await response.blob();
+    const dataUrl = await new Promise<string>((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        if (typeof reader.result === "string") {
+          resolve(reader.result);
+        } else {
+          reject(new Error("No se pudo convertir la imagen a DataURL"));
+        }
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
+
+    return new Promise<{ dataUrl: string; width: number; height: number }>((resolve, reject) => {
+      const image = new Image();
+      image.onload = () => {
+        resolve({ dataUrl, width: image.naturalWidth, height: image.naturalHeight });
+      };
+      image.onerror = reject;
+      image.src = dataUrl;
+    });
+  };
 
   const handleDownload = async () => {
     setGenerating(true);
@@ -59,6 +91,32 @@ export function EventPdfExportButton({
       doc.line(margin, 118, pageWidth - margin, 118);
 
       let y = 140;
+      if (imageUrl) {
+        try {
+          const imageData = await loadImageDataUrl(imageUrl);
+          const maxImageWidth = contentWidth;
+          const maxImageHeight = 220;
+          let imageWidth = imageData.width;
+          let imageHeight = imageData.height;
+          const aspectRatio = imageWidth / imageHeight;
+
+          if (imageWidth > maxImageWidth) {
+            imageWidth = maxImageWidth;
+            imageHeight = imageWidth / aspectRatio;
+          }
+          if (imageHeight > maxImageHeight) {
+            imageHeight = maxImageHeight;
+            imageWidth = imageHeight * aspectRatio;
+          }
+
+          doc.addImage(imageData.dataUrl, "JPEG", margin, 126, imageWidth, imageHeight);
+          y = 126 + imageHeight + 26;
+        } catch (error) {
+          console.warn("No se pudo cargar la imagen del evento", error);
+          y = 140;
+        }
+      }
+
       doc.setTextColor("#0f172a");
       doc.setFont("helvetica", "bold");
       doc.setFontSize(14);
@@ -69,11 +127,12 @@ export function EventPdfExportButton({
       doc.setFontSize(11);
       const descriptionText =
         description || "Escanea el código QR para confirmar tu asistencia al evento.";
-      const descriptionLines = doc.splitTextToSize(descriptionText, contentWidth - 190);
+      const descriptionWidth = contentWidth - 220;
+      const descriptionLines = doc.splitTextToSize(descriptionText, descriptionWidth);
       doc.text(descriptionLines, margin, y);
 
-      const qrX = pageWidth - margin - 180;
-      const qrY = 138;
+      const qrX = margin + descriptionWidth + 20;
+      const qrY = y;
       doc.addImage(qrDataUrl, "PNG", qrX, qrY, 180, 180);
 
       doc.setFontSize(10);
@@ -83,9 +142,10 @@ export function EventPdfExportButton({
         align: "center",
       });
 
+      const urlY = Math.max(y + descriptionLines.length * 14, qrY + 210) + 24;
       doc.setFontSize(9);
       doc.setTextColor("#64748b");
-      doc.text(`URL de acceso: ${eventUrl}`, margin, pageWidth > 580 ? 760 : 740, {
+      doc.text(`URL de acceso: ${eventUrl}`, margin, urlY, {
         maxWidth: contentWidth,
       });
 

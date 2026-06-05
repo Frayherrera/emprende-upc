@@ -106,6 +106,7 @@ export function AdminEventsList({ events }: AdminEventsListProps) {
                         })}
                         location={event.location}
                         description={event.description}
+                        imageUrl={event.mainImage}
                       />
                     </td>
                     <td className="px-4 py-3 text-right">
@@ -167,6 +168,7 @@ export function AdminEventsList({ events }: AdminEventsListProps) {
                       })}
                       location={event.location}
                       description={event.description}
+                      imageUrl={event.mainImage}
                     />
                   </div>
                 </div>
