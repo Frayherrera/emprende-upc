@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import { Search, Calendar, MapPin, ImageOff } from "lucide-react";
 import { DeleteEventButton } from "./delete-event-button";
 import { AttendancesDialog } from "@/components/eventos/attendances-dialog";
+import { EventPdfExportButton } from "@/components/eventos/event-pdf-export-button";
 
 interface EventItem {
   id: string;
@@ -58,6 +59,7 @@ export function AdminEventsList({ events }: AdminEventsListProps) {
                   <th className="px-4 py-3 text-left font-medium text-foreground">Fecha</th>
                   <th className="px-4 py-3 text-left font-medium text-foreground">Lugar</th>
                   <th className="px-4 py-3 text-center font-medium text-foreground">Asistencias</th>
+                  <th className="px-4 py-3 text-center font-medium text-foreground">Exportar</th>
                   <th className="px-4 py-3 text-right font-medium text-foreground">Acción</th>
                 </tr>
               </thead>
@@ -88,6 +90,23 @@ export function AdminEventsList({ events }: AdminEventsListProps) {
                     <td className="px-4 py-3 text-muted-foreground">{event.location}</td>
                     <td className="px-4 py-3 text-center">
                       <AttendancesDialog eventId={event.id} eventTitle={event.title} />
+                    </td>
+                    <td className="px-4 py-3 text-center">
+                      <EventPdfExportButton
+                        eventId={event.id}
+                        title={event.title}
+                        date={new Date(event.dateTime).toLocaleDateString("es-CO", {
+                          day: "numeric",
+                          month: "long",
+                          year: "numeric",
+                        })}
+                        time={new Date(event.dateTime).toLocaleTimeString("es-CO", {
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        })}
+                        location={event.location}
+                        description={event.description}
+                      />
                     </td>
                     <td className="px-4 py-3 text-right">
                       <DeleteEventButton eventId={event.id} />
@@ -132,12 +151,24 @@ export function AdminEventsList({ events }: AdminEventsListProps) {
                       {event.location}
                     </span>
                   </div>
-                  <div className="mt-2">
+                  <div className="mt-2 space-y-2">
                     <AttendancesDialog eventId={event.id} eventTitle={event.title} />
+                    <EventPdfExportButton
+                      eventId={event.id}
+                      title={event.title}
+                      date={new Date(event.dateTime).toLocaleDateString("es-CO", {
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric",
+                      })}
+                      time={new Date(event.dateTime).toLocaleTimeString("es-CO", {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })}
+                      location={event.location}
+                      description={event.description}
+                    />
                   </div>
-                </div>
-                <div className="flex flex-col items-center gap-1">
-                  <DeleteEventButton eventId={event.id} />
                 </div>
               </div>
             ))}

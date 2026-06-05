@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import { Calendar, MapPin, ArrowLeft } from "lucide-react";
 import { prisma } from "@/lib/prisma";
-import { Button } from "@/components/ui/button";
 import { AttendanceForm } from "@/components/eventos/attendance-form";
 import Link from "next/link";
 
@@ -92,13 +91,18 @@ export default async function EventoDetailPage({ params }: PageProps) {
 
           <hr className="border-border/60" />
 
-          <div>
-            <h2 className="mb-4 text-lg font-semibold text-foreground">
-              Confirmar asistencia
-            </h2>
-            <div className="max-w-md">
-              <AttendanceForm eventId={event.id} />
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h2 className="mb-4 text-lg font-semibold text-foreground">
+                Confirmar asistencia
+              </h2>
+              <p className="text-sm text-muted-foreground">
+                Usa el panel de administración para generar el PDF de presentación y el QR del evento.
+              </p>
             </div>
+          </div>
+          <div className="max-w-md">
+            <AttendanceForm eventId={event.id} />
           </div>
         </div>
       </div>
