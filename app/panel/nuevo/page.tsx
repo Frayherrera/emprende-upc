@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { NumericInput } from "@/components/ui/numeric-input";
 import { AttachmentsGuard } from "@/components/panel/attachments-guard";
 import { CoverPicker } from "@/components/panel/cover-picker";
 import { createVenture } from "../actions";
@@ -78,7 +79,11 @@ export default async function NuevoEmprendimientoPage() {
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="contactNumber">Número de contacto</Label>
-                  <Input id="contactNumber" name="contactNumber" placeholder="3001234567" />
+                  <NumericInput
+                    id="contactNumber"
+                    name="contactNumber"
+                    placeholder="3001234567"
+                  />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="instagram">Instagram</Label>

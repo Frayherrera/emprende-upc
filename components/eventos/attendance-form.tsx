@@ -12,6 +12,7 @@ import { toast } from "sonner";
 
 const attendanceSchema = z.object({
   studentName: z.string().min(2, "El nombre debe tener al menos 2 caracteres").max(200),
+  email: z.string().email("Ingresa un correo electrónico válido"),
   academicProgramId: z.string().min(1, "Selecciona un programa académico"),
 });
 
@@ -86,6 +87,19 @@ export function AttendanceForm({ eventId }: AttendanceFormProps) {
         />
         {errors.studentName && (
           <p className="text-xs text-destructive">{errors.studentName.message}</p>
+        )}
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="email">Correo electrónico</Label>
+        <Input
+          id="email"
+          type="email"
+          placeholder="Ej: juan@example.com"
+          {...register("email")}
+        />
+        {errors.email && (
+          <p className="text-xs text-destructive">{errors.email.message}</p>
         )}
       </div>
 
